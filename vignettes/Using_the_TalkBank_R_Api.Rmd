@@ -1,11 +1,19 @@
 ---
 title: "Using the TalkBank R Api"
-output: rmarkdown::html_vignette
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
 vignette: >
   %\VignetteIndexEntry{Using the TalkBank R Api}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+```{css my-header-colors, echo = FALSE}
+.page-header {
+    background-image: linear-gradient(60deg, #cc002b, #000000);
+}
+```
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
