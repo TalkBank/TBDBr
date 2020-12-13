@@ -1,5 +1,5 @@
 Package: talkbank
-Title: What the Package Does (One Line, Title Case)
+Title: Easy Access To TalkBankDB via R API
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "First",
@@ -7,7 +7,23 @@ Authors@R:
            role = c("aut", "cre"),
            email = "first.last@example.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: The purpose of TalkBankDB is to provide an intuitive on-line interface
+for researchers to explore TalkBank's media and transcripts, specify data to be extracted,
+and pass these data on to statistical programs for further analysis. We hope to: (1) Increase accessibility:
+Previously, browsing TalkBank required knowing the name of a corpus or area of research,
+finding its location within the talkbank.org domain (ex: fluency.talkbank.org),
+then browsing/downloading the media and annotations and installing the CLAN tools.
+To make these resources more accessible, TalkBankDB provides a single online interface to
+query across all of TalkBank to find relevant corpora and links to media and transcripts.
+Users can visually explore data directly in the browser, and if desired, download it for
+further analysis in a statistical software package. (2) Grow community and foster collaboration:
+With the entirety and richness of TalkBank freely accessible from a simple web interface,
+resources that were previously known only by advanced users will be open to a broader community.
+Features such as word usage, utterance length, measures of language acquisition speed and
+ability by demographics can easily be selected, output, plotted, and analyzed through the web interface.
+By also providing a GitHub account link for users to upload scripts and analyses,
+the TalkBankDB site provides a single point where users can explore, share their research,
+and see what others are doing in the TalkBank community.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
