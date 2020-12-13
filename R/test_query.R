@@ -1,3 +1,11 @@
+#' @title Test function for talkbankDB query
+#'
+#' @description This function tests the talkbankDB query functions
+#' @export
+#' @examples
+#' randomTests()
+
+
 # A set of example queries for API function.
 randomTests <- function() {
   # One file.
