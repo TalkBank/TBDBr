@@ -23,4 +23,5 @@ Language: en-US
 VignetteBuilder: knitr
 Imports: 
     httr,
-    rjson
+    rjson,
+    stats
