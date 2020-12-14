@@ -1,12 +1,15 @@
+# Include library for making GET/POST requests.
+library(httr);
+# Include library for parsing JSON.
+library(rjson);
+
+
 #' @title Test function for talkbankDB query
 #'
 #' @description This function tests the talkbankDB query functions
 #' @export
 #' @examples
 #' randomTests()
-
-
-# A set of example queries for API function.
 randomTests <- function() {
   # One file.
   zoneFileQuery <- list(queryVals = list(corpusName = list('childes'), corpora = list(list('childes', 'Eng-NA', 'MacWhinney', '010411a')), media = list('audio'), lang = list(), gender = list(), age = list(), designType = list(), activityType = list(), groupType = list()));

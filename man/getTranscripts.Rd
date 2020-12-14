@@ -49,5 +49,9 @@ Queries a table where each row represents a transcript matching the query from s
 }
 }
 \examples{
-oneTranscript <- getTranscripts(corpusName = list('childes'), corpora = list(list('childes', 'Eng-NA', 'MacWhinney', '010411a')))
+getTranscripts(corpusName = list('childes'),
+               corpora = list(list('childes',
+                                   'Eng-NA',
+                                   'MacWhinney',
+                                   '010411a')))
 }

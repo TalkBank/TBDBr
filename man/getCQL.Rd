@@ -18,6 +18,8 @@ getCQL(
 )
 }
 \arguments{
+\item{cqlArr}{undefinted variable}
+
 \item{corpusName}{Name of corpus to query}
 
 \item{corpora}{Name of corpora(s) to query}
@@ -45,6 +47,8 @@ The "CQL" (Corpus Query Language) tab lets us search for patterns in the selecte
 }
 }
 \examples{
-cqlMyBall <- getCQL(cqlArr=list(list(type="lemma", item="my", freq="once"), list(type="lemma", item="ball", freq="once")), corpusName = list('childes'), corpora = list(list('childes', 'Eng-NA', 'MacWhinney')))
-cqlEat <- getCQL(cqlArr=list(list(type="lemma", item="eat", freq="once")), corpusName = list('childes'), corpora = list(list('childes', 'Eng-NA', 'MacWhinney')))
+getCQL(cqlArr=list(list(type="lemma", item="my", freq="once"),
+                   list(type="lemma", item="ball", freq="once")),
+       corpusName = list('childes'),
+       corpora = list(list('childes', 'Eng-NA', 'MacWhinney')))
 }

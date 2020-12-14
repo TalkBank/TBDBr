@@ -45,5 +45,8 @@ Queries a table with all the words from the selected transcripts condensed into 
 }
 }
 \examples{
-macwTokenTypes <- getTokenTypes(corpusName = list('childes'), corpora = list(list('childes', 'Eng-NA', 'MacWhinney')))
+getTokenTypes(corpusName = list('childes'),
+              corpora = list(list('childes',
+                                  'Eng-NA',
+                                  'MacWhinney')))
 }

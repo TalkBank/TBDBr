@@ -4,6 +4,8 @@
 # talkbank
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/rbcavanaugh/talkbank/workflows/R-CMD-check/badge.svg)](https://github.com/rbcavanaugh/talkbank/actions)
 <!-- badges: end -->
 
 The goal of talkbank is to provide easy access to talkbankDB through the

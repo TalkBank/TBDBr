@@ -54,5 +54,8 @@ Queries a table where each row represents a participant (speaker) listed in a tr
 }
 }
 \examples{
-macwParticipants <- getParticipants(corpusName = list('childes'), corpora = list(list('childes', 'Eng-NA', 'MacWhinney')))
+getParticipants(corpusName = list('childes'),
+                corpora = list(list('childes',
+                                    'Eng-NA',
+                                    'MacWhinney')))
 }

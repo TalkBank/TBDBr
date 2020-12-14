@@ -1,3 +1,9 @@
+# Include library for making GET/POST requests.
+library(httr);
+# Include library for parsing JSON.
+library(rjson);
+
+
 #' @title Get transcript data
 #'
 #' @description Queries a table where each row represents a transcript matching the query from step 1. Each row has:
@@ -20,7 +26,11 @@
 #' @param groupType Query by group type
 #' @export
 #' @examples
-#' oneTranscript <- getTranscripts(corpusName = list('childes'), corpora = list(list('childes', 'Eng-NA', 'MacWhinney', '010411a')))
+#' getTranscripts(corpusName = list('childes'),
+#'                corpora = list(list('childes',
+#'                                    'Eng-NA',
+#'                                    'MacWhinney',
+#'                                    '010411a')))
 getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
@@ -61,7 +71,10 @@ getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL
 #' @param groupType Query by group type
 #' @export
 #' @examples
-#' macwParticipants <- getParticipants(corpusName = list('childes'), corpora = list(list('childes', 'Eng-NA', 'MacWhinney')))
+#' getParticipants(corpusName = list('childes'),
+#'                 corpora = list(list('childes',
+#'                                     'Eng-NA',
+#'                                     'MacWhinney')))
 getParticipants <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
@@ -99,7 +112,11 @@ getParticipants <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NUL
 #' @param groupType Query by group type
 #' @export
 #' @examples
-#' oneFileTokens <- getTokens(corpusName = list('childes'), corpora = list(list('childes', 'Eng-NA', 'MacWhinney', '010411a')))
+#' getTokens(corpusName = list('childes'),
+#'           corpora = list(list('childes',
+#'                               'Eng-NA',
+#'                               'MacWhinney',
+#'                               '010411a')))
 getTokens <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
@@ -133,7 +150,10 @@ getTokens <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age
 #' @param groupType Query by group type
 #' @export
 #' @examples
-#' macwTokenTypes <- getTokenTypes(corpusName = list('childes'), corpora = list(list('childes', 'Eng-NA', 'MacWhinney')))
+#' getTokenTypes(corpusName = list('childes'),
+#'               corpora = list(list('childes',
+#'                                   'Eng-NA',
+#'                                   'MacWhinney')))
 getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
@@ -153,6 +173,7 @@ getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #' * run
 #' * running
 #' * ran
+#' @param cqlArr undefinted variable
 #' @param corpusName Name of corpus to query
 #' @param corpora Name of corpora(s) to query
 #' @param lang Query by Language
@@ -164,8 +185,10 @@ getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #' @param groupType Query by group type
 #' @export
 #' @examples
-#' cqlMyBall <- getCQL(cqlArr=list(list(type="lemma", item="my", freq="once"), list(type="lemma", item="ball", freq="once")), corpusName = list('childes'), corpora = list(list('childes', 'Eng-NA', 'MacWhinney')))
-#' cqlEat <- getCQL(cqlArr=list(list(type="lemma", item="eat", freq="once")), corpusName = list('childes'), corpora = list(list('childes', 'Eng-NA', 'MacWhinney')))
+#' getCQL(cqlArr=list(list(type="lemma", item="my", freq="once"),
+#'                    list(type="lemma", item="ball", freq="once")),
+#'        corpusName = list('childes'),
+#'        corpora = list(list('childes', 'Eng-NA', 'MacWhinney')))
 getCQL <- function (cqlArr=NULL, corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 

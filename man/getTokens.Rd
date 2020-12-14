@@ -50,5 +50,9 @@ Query a table with all the words from the selected transcripts, one word (token)
 }
 }
 \examples{
-oneFileTokens <- getTokens(corpusName = list('childes'), corpora = list(list('childes', 'Eng-NA', 'MacWhinney', '010411a')))
+getTokens(corpusName = list('childes'),
+          corpora = list(list('childes',
+                              'Eng-NA',
+                              'MacWhinney',
+                              '010411a')))
 }
