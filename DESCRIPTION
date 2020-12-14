@@ -24,4 +24,5 @@ VignetteBuilder: knitr
 Imports: 
     httr,
     rjson,
-    stats
+    stats,
+    prettydoc

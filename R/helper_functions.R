@@ -2,6 +2,7 @@
 #' @importFrom stats setNames
 #' @import rjson
 #' @import httr
+#' @import prettydoc
 # Include library for making GET/POST requests.
 library(httr);
 # Include library for parsing JSON.
