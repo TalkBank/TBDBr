@@ -70,8 +70,8 @@ verifyArg <- function (corpusName, corpora, lang, media, age, gender, designType
 
   # Verify corpusName arg.
   if(!is.null(corpusName)) {
-    if( typeof(corpusName) != "list") {
-      print("ERROR: Argument 'corpusName' must be a list.");
+    if( typeof(corpusName) != "character") {
+      print("ERROR: Argument 'corpusName' must be a character string.");
       return(FALSE);
     }
 
