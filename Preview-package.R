@@ -12,12 +12,12 @@
 #5. load development version of the package
    load_all()
 
-#6. test package function with your exampleQueries function:
-   exampleQueries()
+#6. test package function with your randomTests function:
+   randomTests()
 
-#7. you can look at documentation for exampleQueries like this:
+#7. you can look at documentation for randomTests like this:
     # - obviously, there's not much to it...
-   ?exampleQueries()
+   ?randomTests()
 
 #8. More importantly, you should be able to use any of the package functions:
    macwParticipants <- getParticipants(corpusName = list('childes'),
