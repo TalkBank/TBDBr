@@ -17,7 +17,7 @@ library(rjson);
 #' * Group Type.
 #' @param corpusName Name of corpus to query
 #' @param corpora Name of corpora(s) to query
-#' @param lang Query by Language
+#' @param lang Query by Language (example: "eng").  Legal values are 3-letter language codes based on the ISO 639-3 standard.
 #' @param media Query by Media
 #' @param age Query by Age
 #' @param gender Query by gender
@@ -29,8 +29,7 @@ library(rjson);
 #' getTranscripts(corpusName = list('childes'),
 #'                corpora = list(list('childes',
 #'                                    'Eng-NA',
-#'                                    'MacWhinney',
-#'                                    '010411a')))
+#'                                    'MacWhinney')))
 getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
@@ -62,7 +61,7 @@ getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL
 #' * Median number of words per speaker's utterance.
 #' @param corpusName Name of corpus to query
 #' @param corpora Name of corpora(s) to query
-#' @param lang Query by Language
+#' @param lang Query by Language (example: "eng").  Legal values are 3-letter language codes based on the ISO 639-3 standard.
 #' @param media Query by Media
 #' @param age Query by Age
 #' @param gender Query by gender
@@ -103,7 +102,7 @@ getParticipants <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NUL
 #' * Part of speech code. (See CHAT manual for descriptions of codes).
 #' @param corpusName Name of corpus to query
 #' @param corpora Name of corpora(s) to query
-#' @param lang Query by Language
+#' @param lang Query by Language (example: "eng").  Legal values are 3-letter language codes based on the ISO 639-3 standard.
 #' @param media Query by Media
 #' @param age Query by Age
 #' @param gender Query by gender
@@ -141,7 +140,7 @@ getTokens <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age
 #' * The word's stem.
 #' @param corpusName Name of corpus to query
 #' @param corpora Name of corpora(s) to query
-#' @param lang Query by Language
+#' @param lang Query by Language (example: "eng").  Legal values are 3-letter language codes based on the ISO 639-3 standard.
 #' @param media Query by Media
 #' @param age Query by Age
 #' @param gender Query by gender
@@ -176,7 +175,7 @@ getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #' @param cqlArr undefinted variable
 #' @param corpusName Name of corpus to query
 #' @param corpora Name of corpora(s) to query
-#' @param lang Query by Language
+#' @param lang Query by Language (example: "eng").  Legal values are 3-letter language codes based on the ISO 639-3 standard.
 #' @param media Query by Media
 #' @param age Query by Age
 #' @param gender Query by gender
