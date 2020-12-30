@@ -17,23 +17,23 @@ getTranscripts(
 )
 }
 \arguments{
-\item{corpusName}{Name of corpus to query}
+\item{corpusName}{Name of corpus to query.  For example, to search within the childes corpus, corpus="childes".  Note this is a character string value (not a list).  Legal values are 'aphasia', 'asd', 'biling', 'ca', 'childes', 'class', 'dementia', 'fluency', 'homebank', 'phon', 'rhd', 'samtale', 'slabank', and 'tbi'.}
 
-\item{corpora}{Name of corpora(s) to query}
+\item{corpora}{Name of corpus/corporas to query.  This is a path starting with the corpus name followed by subfolder names leading to a folder for which all transcripts beneath it will be queried.  For example, to query all transripts in the MacWhinney and Brown corpus: corpora = list(list('childes', 'Eng-NA', 'MacWhinney'), list('childes', 'Eng-NA', 'Brown')).  Legal values can be found by searching the TalkBank browser: https://sla.talkbank.org/TBB.}
 
-\item{lang}{Query by Language}
+\item{lang}{Query by language For example, to get transcripts that contain both English and Spanish: lang=list("eng", "spa"). Legal values: 3-letter language codes based on the ISO 639-3 standard.}
 
-\item{media}{Query by Media}
+\item{media}{Query by media type.  For example, to get transcripts with an associated video recording: media=list("video").  Legal values: "audio" or "video".}
 
-\item{age}{Query by Age}
+\item{age}{Query by participant month age range.  For example, to get transcripts with target participants who are either 3-12 or 14-18 months old: age=list(list(from="3", to="12"), list(from="14", to="18")).  Legal values: integer month ages.}
 
-\item{gender}{Query by gender}
+\item{gender}{Query by participant gender. For example, to get transcripts with female target participants: gender=list("female").  Legal values: "female" or "male".}
 
-\item{designType}{Query by design type}
+\item{designType}{Query by design type.  For example, to get transcripts from a longitudinal study: designType=list("long")  Legal values are "long" for longitudinal studies, "cross" for cross-sectional studies.}
 
-\item{activityType}{Query by activity type}
+\item{activityType}{Query by activity type.  For example, to get transcripts where the target particpant is engaged in toy play: activityType=list("toyplay").  See the CHAT manual for legal values.}
 
-\item{groupType}{Query by group type}
+\item{groupType}{Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.}
 }
 \description{
 Queries a table where each row represents a transcript matching the query from step 1. Each row has:
@@ -52,6 +52,5 @@ Queries a table where each row represents a transcript matching the query from s
 getTranscripts(corpusName = list('childes'),
                corpora = list(list('childes',
                                    'Eng-NA',
-                                   'MacWhinney',
-                                   '010411a')))
+                                   'MacWhinney')))
 }

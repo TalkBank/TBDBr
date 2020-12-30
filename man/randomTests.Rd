@@ -7,7 +7,7 @@
 randomTests()
 }
 \description{
-This function tests the talkbankDB query functions
+This function contains a random set of example queries.
 }
 \examples{
 randomTests()

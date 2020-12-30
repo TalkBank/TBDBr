@@ -16,25 +16,25 @@ randomTests <- function() {
   engNAtranscripts <- getTranscripts(corpusName = 'childes', corpora = list(list('childes', 'Eng-NA')));
   engLangTranscripts <- getTranscripts(corpusName = 'childes', lang = list('eng'));
   allChildesTranscripts <- getTranscripts(corpusName = 'childes', corpora = list(list('childes')));
-  
+
   # Get participants in MacWhinney set.
   macwParticipants <- getParticipants(corpusName = 'childes', corpora = list(list('childes', 'Eng-NA', 'MacWhinney')));
-  
+
   # Get tokens (words) from one transcript.
   oneFileTokens <- getTokens(corpusName = 'childes', corpora = list(list('childes', 'Eng-NA', 'MacWhinney', '010411a')));
-  
+
   # Get utterances from one transcript.
-  oneFileUtterances <- getUtterances(corpusName = 'childes', corpora = list(list('childes', 'Eng-NA', 'MacWhinney', '010411a')) );
-  
+  oneFileUtterances <- getUtterances(corpusName = 'childes', corpora = list(list('childes', 'Eng-NA', 'MacWhinney', '010411a')));
+
   # Get token types from MacWhinney set.
   macwTokenTypes <- getTokenTypes(corpusName = 'childes', corpora = list(list('childes', 'Eng-NA', 'MacWhinney')));
-  
+
   # Query for text pattern "my ball" as lemma in MacWhinney set.
   cqlMyBall <- getCQL(cqlArr=list(list(type="lemma", item="my", freq="once"), list(type="lemma", item="ball", freq="once")), corpusName = 'childes', corpora = list(list('childes', 'Eng-NA', 'MacWhinney')));
-  # Query for lemma "eat" in MacWhinney set.  Matches all forms of "eat": "eat", "eats", "eating", "ate".. 
+  # Query for lemma "eat" in MacWhinney set.  Matches all forms of "eat": "eat", "eats", "eating", "ate"..
   cqlEat <- getCQL(cqlArr=list(list(type="lemma", item="eat", freq="once")), corpusName = 'childes', corpora = list(list('childes', 'Eng-NA', 'MacWhinney')));
-  
-  
+
+
   # Get English transcripts form homebank.
   engLangHomebankTranscripts <- getTranscripts(corpusName = 'homebank', lang = list('eng'));
 }
