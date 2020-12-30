@@ -23,6 +23,9 @@ randomTests <- function() {
   # Get tokens (words) from one transcript.
   oneFileTokens <- getTokens(corpusName = 'childes', corpora = list(list('childes', 'Eng-NA', 'MacWhinney', '010411a')));
   
+  # Get utterances from one transcript.
+  oneFileUtterances <- getUtterances(corpusName = 'childes', corpora = list(list('childes', 'Eng-NA', 'MacWhinney', '010411a')) );
+  
   # Get token types from MacWhinney set.
   macwTokenTypes <- getTokenTypes(corpusName = 'childes', corpora = list(list('childes', 'Eng-NA', 'MacWhinney')));
   
