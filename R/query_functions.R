@@ -307,7 +307,7 @@ getNgrams <- function (nGram=NULL, corpusName=NULL, corpora=NULL, lang=NULL, med
 #' @description Queryting by "CQL" (Corpus Query Language) lets us search for patterns in the selected transcripts. We construct a CQL query by specifying a search pattern of words, lemmas, and parts of speech.
 # The "cqlArr" parameter specifies a pattern to search for in text.  The pattern is built up by appending components that are one of three types:
 # - Exact word match (type="word").
-# - Match any form of a word (type="stem").
+# - Match any form of a word (type="lemma").
 # - Or part of speech (type="pos").
 # 
 # Along with type, components have another value, "freq", specifying how many times an item should appear at that location.
@@ -362,8 +362,8 @@ getNgrams <- function (nGram=NULL, corpusName=NULL, corpora=NULL, lang=NULL, med
 #'
 #' @param cqlArr Query by grammatical pattern.
 #' For example, to search for all utterances where a speaker says "go" once followed by adverb occuring one or more times: cqlArr=list(list(type="word", item="go", freq="once"), list(type="pos", item="adv", freq="onePlus")).
-#' Legal values for type are: "word" to match exact word, "stem" to match all forms of a word stem, "pos" to match parts of speech.
-#' Legal values for item are any word, word stem, or part of speech code (see CHAT manual or the CQL tab on TalkBankDB (https://talkbank.org/DB) for legal part-of-speech codes).
+#' Legal values for type are: "word" to match exact word, "lemma" to match all forms of a word, "pos" to match parts of speech.
+#' Legal values for item are any word, word lemma, or part of speech code (see CHAT manual or the CQL tab on TalkBankDB (https://talkbank.org/DB) for legal part-of-speech codes).
 #' Legal values for freq are "once", "onePlus", and "zeroPlus".
 #' @param corpusName Name of corpus to query.  For example, to search within the childes corpus, corpus="childes".  Note this is a character string value (not a list).  Legal values are 'aphasia', 'asd', 'biling', 'ca', 'childes', 'class', 'dementia', 'fluency', 'homebank', 'phon', 'rhd', 'samtale', 'slabank', and 'tbi'.
 #' @param corpora Name of corpus/corporas to query.  This is a path starting with the corpus name followed by subfolder names leading to a folder for which all transcripts beneath it will be queried.  For example, to query all transripts in the MacWhinney and Brown corpus: corpora = list(list('childes', 'Eng-NA', 'MacWhinney'), list('childes', 'Eng-NA', 'Brown')).  Legal values can be found by searching the TalkBank browser: https://sla.talkbank.org/TBB.
