@@ -31,7 +31,7 @@ randomTests <- function() {
   oneFileUtterances <- getUtterances(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
 
   # Get 3-grams of words from one transcript.
-  nGrams <- getNgrams(nGram=list(size="3", type="word"), corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
+  nGrams <- getNgrams(nGram=c("3", "word"), corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
 
   # Get token types from MacWhinney set.
   macwTokenTypes <- getTokenTypes(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney'));
@@ -44,4 +44,3 @@ randomTests <- function() {
   # Get English transcripts form homebank.
   engLangHomebankTranscripts <- getTranscripts(corpusName = 'homebank', lang = 'eng');
 }
-

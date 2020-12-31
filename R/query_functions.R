@@ -260,9 +260,7 @@ getUtterances <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #' * Speaker's role.
 #' * The n-gram (word, stem, or part-of-speech).  See CHAT manual for part-of-speech code values.
 #' * Frequency count of n-gram.
-#' #' @param nGram Query for n-grams by size (n) and type.
-#' For example, to search for all n-grams of length 3 of word type: nGram=list(size="3", type="word").
-#' Legal value for size is any positive integer equal to or greater than 1.  Legal value for type is "word" to return exact word n-grams, "stem" to return word stem n-grams, "pos" to return part of speech n-grams.
+#' @param nGram Query for n-grams by size (n) and type. For example, to search for all n-grams of length 3 of word type: nGram=list(size="3", type="word"). Legal value for size is any positive integer equal to or greater than 1.  Legal value for type is "word" to return exact word n-grams, "stem" to return word stem n-grams, "pos" to return part of speech n-grams.
 #' @param corpusName Name of corpus to query.  For example, to search within the childes corpus, corpus="childes".  Note this is a character string value (not a list).  Legal values are 'aphasia', 'asd', 'biling', 'ca', 'childes', 'class', 'dementia', 'fluency', 'homebank', 'phon', 'rhd', 'samtale', 'slabank', and 'tbi'.
 #' @param corpora Name of corpus/corporas to query.  This is a path starting with the corpus name followed by subfolder names leading to a folder for which all transcripts beneath it will be queried.  For example, to query all transripts in the MacWhinney and Brown corpus: corpora = list(list('childes', 'Eng-NA', 'MacWhinney'), list('childes', 'Eng-NA', 'Brown')).  Legal values can be found by searching the TalkBank browser: https://sla.talkbank.org/TBB.
 #' @param lang Query by language.  For example, to get transcripts that contain both English and Spanish: lang=list("eng", "spa"). Legal values: 3-letter language codes based on the ISO 639-3 standard.
@@ -274,13 +272,22 @@ getUtterances <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #' @param groupType Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.
 #' @export
 #' @examples
-#' getNgrams(nGram=list(size="3", type="word"),
+#' getNgrams(nGram=c("3", "word"),
 #'           corpusName = 'childes',
-#'           corpora = list(list('childes',
+#'           corpora = c('childes',
 #'                               'Eng-NA',
 #'                               'MacWhinney',
-#'                               '010411a')) );
+#'                               '010411a'));
 getNgrams <- function (nGram=NULL, corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+  if(!missing(nGram)){nGram = list(size=nGram[1], type = nGram[2])}
+  if(!missing(corpora)){corpora = list(as.list(corpora))}
+  if(!missing(lang)){lang = as.list(lang)}
+  if(!missing(media)){media = as.list(media)}
+  if(!missing(age)){age = list(list(from=age[1], to = age[2]))}
+  if(!missing(gender)){gender = as.list(gender)}
+  if(!missing(designType)){designType = as.list(designType)}
+  if(!missing(activityType)){activityType = as.list(activityType)}
+  if(!missing(groupType)){groupType = as.list(groupType)}
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
   if(argsOK) {
