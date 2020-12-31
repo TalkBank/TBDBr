@@ -54,8 +54,8 @@ Queries a table where each row represents a participant (speaker) listed in a tr
 }
 }
 \examples{
-getParticipants(corpusName = list('childes'),
-                corpora = list(list('childes',
+getParticipants(corpusName = 'childes',
+                corpora = c('childes',
                                     'Eng-NA',
-                                    'MacWhinney')))
+                                    'MacWhinney'))
 }

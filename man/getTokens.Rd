@@ -50,9 +50,9 @@ Query a table with all the words from the selected transcripts, one word (token)
 }
 }
 \examples{
-getTokens(corpusName = list('childes'),
-          corpora = list(list('childes',
+getTokens(corpusName = 'childes',
+          corpora = c('childes',
                               'Eng-NA',
                               'MacWhinney',
-                              '010411a')))
+                              '010411a'))
 }

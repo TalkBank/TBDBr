@@ -45,8 +45,8 @@ Queries a table with all the words from the selected transcripts condensed into 
 }
 }
 \examples{
-getTokenTypes(corpusName = list('childes'),
-              corpora = list(list('childes',
+getTokenTypes(corpusName = 'childes',
+              corpora = c('childes',
                                   'Eng-NA',
-                                  'MacWhinney')))
+                                  'MacWhinney'))
 }

@@ -56,6 +56,6 @@ Adding a type="lemma" matches that word stem. For instance, inserting type="lemm
 \examples{
 getCQL(cqlArr=list(list(type="lemma", item="my", freq="once"),
                    list(type="lemma", item="ball", freq="once")),
-       corpusName = list('childes'),
-       corpora = list(list('childes', 'Eng-NA', 'MacWhinney')))
+       corpusName = 'childes',
+       corpora = c('childes', 'Eng-NA', 'MacWhinney'))
 }

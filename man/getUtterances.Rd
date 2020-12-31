@@ -53,8 +53,8 @@ Query a table with all the words from the selected transcripts, one word (token)
 }
 \examples{
 getUtterances(corpusName = 'childes',
-              corpora = list(list('childes',
+              corpora = c('childes',
                                    'Eng-NA',
                                    'MacWhinney',
-                                   '010411a')) )
+                                   '010411a'))
 }

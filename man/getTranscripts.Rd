@@ -49,8 +49,8 @@ Queries a table where each row represents a transcript matching the query from s
 }
 }
 \examples{
-getTranscripts(corpusName = list('childes'),
-               corpora = list(list('childes',
+getTranscripts(corpusName = 'childes',
+               corpora = c('childes',
                                    'Eng-NA',
-                                   'MacWhinney')))
+                                   'MacWhinney'))
 }

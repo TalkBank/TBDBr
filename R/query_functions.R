@@ -31,13 +31,14 @@ library(rjson);
 #'                                    'Eng-NA',
 #'                                    'MacWhinney'))
 getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
-  lang = as.list(lang)
-  media = as.list(media)
-  age = list(list(from=age[1], to = age[2]))
-  gender = as.list(gender)
-  designType = as.list(designType)
-  activityType = as.list(activityType)
-  groupType = as.list(groupType)
+  if(!missing(corpora)){corpora = list(as.list(corpora))}
+  if(!missing(lang)){lang = as.list(lang)}
+  if(!missing(media)){media = as.list(media)}
+  if(!missing(age)){age = list(list(from=age[1], to = age[2]))}
+  if(!missing(gender)){gender = as.list(gender)}
+  if(!missing(designType)){designType = as.list(designType)}
+  if(!missing(activityType)){activityType = as.list(activityType)}
+  if(!missing(groupType)){groupType = as.list(groupType)}
 
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
@@ -49,7 +50,6 @@ getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL
     return( respData );
   }
 }
-
 
 #' @title Get participant data
 #'
@@ -83,13 +83,14 @@ getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL
 #'                                     'Eng-NA',
 #'                                     'MacWhinney'))
 getParticipants <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
-  lang = as.list(lang)
-  media = as.list(media)
-  age = list(list(from=age[1], to = age[2]))
-  gender = as.list(gender)
-  designType = as.list(designType)
-  activityType = as.list(activityType)
-  groupType = as.list(groupType)
+  if(!missing(corpora)){corpora = list(as.list(corpora))}
+  if(!missing(lang)){lang = as.list(lang)}
+  if(!missing(media)){media = as.list(media)}
+  if(!missing(age)){age = list(list(from=age[1], to = age[2]))}
+  if(!missing(gender)){gender = as.list(gender)}
+  if(!missing(designType)){designType = as.list(designType)}
+  if(!missing(activityType)){activityType = as.list(activityType)}
+  if(!missing(groupType)){groupType = as.list(groupType)}
 
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
@@ -133,13 +134,14 @@ getParticipants <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NUL
 #'                               'MacWhinney',
 #'                               '010411a'))
 getTokens <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
-  lang = as.list(lang)
-  media = as.list(media)
-  age = list(list(from=age[1], to = age[2]))
-  gender = as.list(gender)
-  designType = as.list(designType)
-  activityType = as.list(activityType)
-  groupType = as.list(groupType)
+  if(!missing(corpora)){corpora = list(as.list(corpora))}
+  if(!missing(lang)){lang = as.list(lang)}
+  if(!missing(media)){media = as.list(media)}
+  if(!missing(age)){age = list(list(from=age[1], to = age[2]))}
+  if(!missing(gender)){gender = as.list(gender)}
+  if(!missing(designType)){designType = as.list(designType)}
+  if(!missing(activityType)){activityType = as.list(activityType)}
+  if(!missing(groupType)){groupType = as.list(groupType)}
 
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
@@ -174,17 +176,18 @@ getTokens <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age
 #' @export
 #' @examples
 #' getTokenTypes(corpusName = 'childes',
-#'               corpora = c'childes',
+#'               corpora = c('childes',
 #'                                   'Eng-NA',
 #'                                   'MacWhinney'))
 getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
-  lang = as.list(lang)
-  media = as.list(media)
-  age = list(list(from=age[1], to = age[2]))
-  gender = as.list(gender)
-  designType = as.list(designType)
-  activityType = as.list(activityType)
-  groupType = as.list(groupType)
+  if(!missing(corpora)){corpora = list(as.list(corpora))}
+  if(!missing(lang)){lang = as.list(lang)}
+  if(!missing(media)){media = as.list(media)}
+  if(!missing(age)){age = list(list(from=age[1], to = age[2]))}
+  if(!missing(gender)){gender = as.list(gender)}
+  if(!missing(designType)){designType = as.list(designType)}
+  if(!missing(activityType)){activityType = as.list(activityType)}
+  if(!missing(groupType)){groupType = as.list(groupType)}
 
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
@@ -230,14 +233,14 @@ getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #'                                    '010411a'))
 getUtterances <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
 
-  corpora = list(as.list(corpora))
-  lang = as.list(lang)
-  media = as.list(media)
-  age = list(list(from=age[1], to = age[2]))
-  gender = as.list(gender)
-  designType = as.list(designType)
-  activityType = as.list(activityType)
-  groupType = as.list(groupType)
+  if(!missing(corpora)){corpora = list(as.list(corpora))}
+  if(!missing(lang)){lang = as.list(lang)}
+  if(!missing(media)){media = as.list(media)}
+  if(!missing(age)){age = list(list(from=age[1], to = age[2]))}
+  if(!missing(gender)){gender = as.list(gender)}
+  if(!missing(designType)){designType = as.list(designType)}
+  if(!missing(activityType)){activityType = as.list(activityType)}
+  if(!missing(groupType)){groupType = as.list(groupType)}
 
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
@@ -283,14 +286,14 @@ getUtterances <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #'        corpusName = 'childes',
 #'        corpora = c('childes', 'Eng-NA', 'MacWhinney'))
 getCQL <- function (cqlArr=NULL, corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
-  corpora = list(as.list(corpora))
-  lang = as.list(lang)
-  media = as.list(media)
-  age = list(list(from=age[1], to = age[2]))
-  gender = as.list(gender)
-  designType = as.list(designType)
-  activityType = as.list(activityType)
-  groupType = as.list(groupType)
+  if(!missing(corpora)){corpora = list(as.list(corpora))}
+  if(!missing(lang)){lang = as.list(lang)}
+  if(!missing(media)){media = as.list(media)}
+  if(!missing(age)){age = list(list(from=age[1], to = age[2]))}
+  if(!missing(gender)){gender = as.list(gender)}
+  if(!missing(designType)){designType = as.list(designType)}
+  if(!missing(activityType)){activityType = as.list(activityType)}
+  if(!missing(groupType)){groupType = as.list(groupType)}
 
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
