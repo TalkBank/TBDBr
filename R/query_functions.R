@@ -15,7 +15,7 @@ library(rjson);
 #' * Design Type.
 #' * Activity Type.
 #' * Group Type.
-#' @param corpusName Name of corpus to query.  For example, to search within the childes corpus, corpus="childes".  Note this is a character string value (not a list).  Legal values are 'aphasia', 'asd', 'biling', 'ca', 'childes', 'class', 'dementia', 'fluency', 'homebank', 'phon', 'rhd', 'samtale', 'slabank', and 'tbi'.
+#' @param corpusName Name of corpus to query.  For example, to search within the childes corpus, corpus="childes".  Legal values are 'aphasia', 'asd', 'biling', 'ca', 'childes', 'class', 'dementia', 'fluency', 'homebank', 'phon', 'rhd', 'samtale', 'slabank', and 'tbi'.
 #' @param corpora Name of corpus/corporas to query.  This is a path starting with the corpus name followed by subfolder names leading to a folder for which all transcripts beneath it will be queried.  For example, to query all transripts in the MacWhinney and Brown corpus: corpora = list(list('childes', 'Eng-NA', 'MacWhinney'), list('childes', 'Eng-NA', 'Brown')).  Legal values can be found by searching the TalkBank browser: https://sla.talkbank.org/TBB.
 #' @param lang Query by language For example, to get transcripts that contain both English and Spanish: lang=list("eng", "spa"). Legal values: 3-letter language codes based on the ISO 639-3 standard.
 #' @param media Query by media type.  For example, to get transcripts with an associated video recording: media=list("video").  Legal values: "audio" or "video".
@@ -31,6 +31,14 @@ library(rjson);
 #'                                    'Eng-NA',
 #'                                    'MacWhinney')))
 getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+  lang = as.list(lang)
+  media = as.list(media)
+  age = list(list(from=age[1], to = age[2]))
+  gender = as.list(gender)
+  designType = as.list(designType)
+  activityType = as.list(activityType)
+  groupType = as.list(groupType)
+
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
   if(argsOK) {
@@ -75,6 +83,14 @@ getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL
 #'                                     'Eng-NA',
 #'                                     'MacWhinney')))
 getParticipants <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+  lang = as.list(lang)
+  media = as.list(media)
+  age = list(list(from=age[1], to = age[2]))
+  gender = as.list(gender)
+  designType = as.list(designType)
+  activityType = as.list(activityType)
+  groupType = as.list(groupType)
+
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
   if(argsOK) {
@@ -117,6 +133,14 @@ getParticipants <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NUL
 #'                               'MacWhinney',
 #'                               '010411a')))
 getTokens <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+  lang = as.list(lang)
+  media = as.list(media)
+  age = list(list(from=age[1], to = age[2]))
+  gender = as.list(gender)
+  designType = as.list(designType)
+  activityType = as.list(activityType)
+  groupType = as.list(groupType)
+
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
   if(argsOK) {
@@ -154,6 +178,14 @@ getTokens <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age
 #'                                   'Eng-NA',
 #'                                   'MacWhinney')))
 getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+  lang = as.list(lang)
+  media = as.list(media)
+  age = list(list(from=age[1], to = age[2]))
+  gender = as.list(gender)
+  designType = as.list(designType)
+  activityType = as.list(activityType)
+  groupType = as.list(groupType)
+
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
   if(argsOK) {
@@ -197,6 +229,16 @@ getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #'                                    'MacWhinney',
 #'                                    '010411a')) )
 getUtterances <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+
+  corpora = list(as.list(corpora))
+  lang = as.list(lang)
+  media = as.list(media)
+  age = list(list(from=age[1], to = age[2]))
+  gender = as.list(gender)
+  designType = as.list(designType)
+  activityType = as.list(activityType)
+  groupType = as.list(groupType)
+
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
   if(argsOK) {
@@ -241,6 +283,15 @@ getUtterances <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #'        corpusName = list('childes'),
 #'        corpora = list(list('childes', 'Eng-NA', 'MacWhinney')))
 getCQL <- function (cqlArr=NULL, corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+  corpora = list(as.list(corpora))
+  lang = as.list(lang)
+  media = as.list(media)
+  age = list(list(from=age[1], to = age[2]))
+  gender = as.list(gender)
+  designType = as.list(designType)
+  activityType = as.list(activityType)
+  groupType = as.list(groupType)
+
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
   if(argsOK) {
