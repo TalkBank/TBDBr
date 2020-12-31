@@ -75,7 +75,7 @@ list_languages <- function(lang=NULL){
   mat = as.data.frame(mat)
   colnames(mat) = c('Language', 'Abbreviation')
 
-  if(is.null(lang)) {print(mat)} else{
+  if(missing(lang)) {print(mat)} else{
     lang = tolower(as.character(lang))
     lang = paste0(toupper(substr((lang), 1, 1)), substr((lang), 2, nchar((lang))))
     mat = mat[grepl(lang, mat$Language),]
