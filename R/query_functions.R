@@ -255,6 +255,52 @@ getUtterances <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 
 
 
+<<<<<<< HEAD
+=======
+
+#' @title Get n-grams
+#'
+#' @description Query to get n-grams of specified size (n) and type. Each row has:
+#' * Speaker's role.
+#' * The n-gram (word, stem, or part-of-speech).  See CHAT manual for part-of-speech code values.
+#' * Frequency count of n-gram.
+#' #' @param nGram Query for n-grams by size (n) and type.
+#' For example, to search for all n-grams of length 3 of word type: nGram=list(size="3", type="word").
+#' Legal value for size is any positive integer equal to or greater than 1.  Legal value for type is "word" to return exact word n-grams, "stem" to return word stem n-grams, "pos" to return part of speech n-grams.
+#' @param corpusName Name of corpus to query.  For example, to search within the childes corpus, corpus="childes".  Note this is a character string value (not a list).  Legal values are 'aphasia', 'asd', 'biling', 'ca', 'childes', 'class', 'dementia', 'fluency', 'homebank', 'phon', 'rhd', 'samtale', 'slabank', and 'tbi'.
+#' @param corpora Name of corpus/corporas to query.  This is a path starting with the corpus name followed by subfolder names leading to a folder for which all transcripts beneath it will be queried.  For example, to query all transripts in the MacWhinney and Brown corpus: corpora = list(list('childes', 'Eng-NA', 'MacWhinney'), list('childes', 'Eng-NA', 'Brown')).  Legal values can be found by searching the TalkBank browser: https://sla.talkbank.org/TBB.
+#' @param lang Query by language.  For example, to get transcripts that contain both English and Spanish: lang=list("eng", "spa"). Legal values: 3-letter language codes based on the ISO 639-3 standard.
+#' @param media Query by media type.  For example, to get transcripts with an associated video recording: media=list("video").  Legal values: "audio" or "video".
+#' @param age Query by participant month age range.  For example, to get transcripts with target participants who are either 3-12 or 14-18 months old: age=list(list(from="3", to="12"), list(from="14", to="18")).  Legal values: integer month ages.
+#' @param gender Query by participant gender. For example, to get transcripts with female target participants: gender=list("female").  Legal values: "female" or "male".
+#' @param designType Query by design type.  For example, to get transcripts from a longitudinal study: designType=list("long")  Legal values are "long" for longitudinal studies, "cross" for cross-sectional studies. 
+#' @param activityType Query by activity type.  For example, to get transcripts where the target particpant is engaged in toy play: activityType=list("toyplay").  See the CHAT manual for legal values.
+#' @param groupType Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.
+#' @export
+#' @examples
+#' getNgrams(nGram=list(size="3", type="word"), 
+#'           corpusName = 'childes', 
+#'           corpora = list(list('childes', 
+#'                               'Eng-NA', 
+#'                               'MacWhinney', 
+#'                               '010411a')) );
+getNgrams <- function (nGram=NULL, corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+  argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
+  
+  if(argsOK) {
+    query <- list(queryVals = list(corpusName=corpusName, nGram=nGram, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType));
+    
+    respData <- getData(query, 'getNgrams');
+    
+    return( respData );
+  }
+}
+
+
+
+
+
+>>>>>>> 13988b85c15f82f74cf3f800eaaab840a0b24bfe
 #' @title Query CQL
 #'
 #' @description Queryting by "CQL" (Corpus Query Language) lets us search for patterns in the selected transcripts. We construct a CQL query by appending words, lemmas, and parts of speech.
@@ -304,5 +350,20 @@ getCQL <- function (cqlArr=NULL, corpusName=NULL, corpora=NULL, lang=NULL, media
 
     return( respData );
   }
+}
+
+
+# Get path tree to every doc in TalkBank.
+# This can be useful for:
+# - Verifying "corpora" param passed to query functions by walking down and verifying path in object returned here.  Can give user feedback on what part of path is incorrect.
+# - GUIs to select paths. 
+# - Auto-complete paths.
+# - Other things...
+getPathTrees <- function () {
+  query <- list(queryVals = list());
+  
+  respData <- fetchJSON(query, 'getPathTrees');
+  
+  return( respData );
 }
 
