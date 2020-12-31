@@ -297,3 +297,18 @@ getCQL <- function (cqlArr=NULL, corpusName=NULL, corpora=NULL, lang=NULL, media
   }
 }
 
+
+# Get path tree to every doc in TalkBank.
+# This can be useful for:
+# - Verifying "corpora" param passed to query functions by walking down and verifying path in object returned here.  Can give user feedback on what part of path is incorrect.
+# - GUIs to select paths. 
+# - Auto-complete paths.
+# - Other things...
+getPathTrees <- function () {
+  query <- list(queryVals = list());
+  
+  respData <- fetchJSON(query, 'getPathTrees');
+  
+  return( respData );
+}
+
