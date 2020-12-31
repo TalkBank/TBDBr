@@ -10,6 +10,8 @@ library(rjson);
 #' @export
 #' @examples
 #' randomTests()
+#'
+#'
 randomTests <- function() {
   # Get sets of transcripts.
   oneTranscript <- getTranscripts(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
@@ -24,16 +26,13 @@ randomTests <- function() {
   oneFileTokens <- getTokens(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
 
   # Get utterances from one transcript.
-<<<<<<< HEAD
   oneFileUtterances <- getUtterances(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
 
-=======
-  oneFileUtterances <- getUtterances(corpusName = 'childes', corpora = list(list('childes', 'Eng-NA', 'MacWhinney', '010411a')) );
-  
-  # Get 3-grams of words from one transcript. 
-  nGrams <- getNgrams(nGram=list(size="3", type="word"), corpusName = 'childes', corpora = list(list('childes', 'Eng-NA', 'MacWhinney', '010411a')) );
-  
->>>>>>> 13988b85c15f82f74cf3f800eaaab840a0b24bfe
+  oneFileUtterances <- getUtterances(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
+
+  # Get 3-grams of words from one transcript.
+  nGrams <- getNgrams(nGram=list(size="3", type="word"), corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
+
   # Get token types from MacWhinney set.
   macwTokenTypes <- getTokenTypes(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney'));
 
@@ -41,7 +40,6 @@ randomTests <- function() {
   cqlMyBall <- getCQL(cqlArr=list(list(type="lemma", item="my", freq="once"), list(type="lemma", item="ball", freq="once")), corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney'));
   # Query for lemma "eat" in MacWhinney set.  Matches all forms of "eat": "eat", "eats", "eating", "ate"..
   cqlEat <- getCQL(cqlArr=list(list(type="lemma", item="eat", freq="once")), corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney'));
-
 
   # Get English transcripts form homebank.
   engLangHomebankTranscripts <- getTranscripts(corpusName = 'homebank', lang = 'eng');
