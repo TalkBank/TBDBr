@@ -26,10 +26,10 @@ library(rjson);
 #' @param groupType Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.
 #' @export
 #' @examples
-#' getTranscripts(corpusName = list('childes'),
-#'                corpora = list(list('childes',
+#' getTranscripts(corpusName = 'childes',
+#'                corpora = c('childes',
 #'                                    'Eng-NA',
-#'                                    'MacWhinney')))
+#'                                    'MacWhinney'))
 getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
   lang = as.list(lang)
   media = as.list(media)
@@ -78,10 +78,10 @@ getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL
 #' @param groupType Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.
 #' @export
 #' @examples
-#' getParticipants(corpusName = list('childes'),
-#'                 corpora = list(list('childes',
+#' getParticipants(corpusName = 'childes',
+#'                 corpora = c('childes',
 #'                                     'Eng-NA',
-#'                                     'MacWhinney')))
+#'                                     'MacWhinney'))
 getParticipants <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
   lang = as.list(lang)
   media = as.list(media)
@@ -127,11 +127,11 @@ getParticipants <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NUL
 #' @param groupType Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.
 #' @export
 #' @examples
-#' getTokens(corpusName = list('childes'),
-#'           corpora = list(list('childes',
+#' getTokens(corpusName = 'childes',
+#'           corpora = c('childes',
 #'                               'Eng-NA',
 #'                               'MacWhinney',
-#'                               '010411a')))
+#'                               '010411a'))
 getTokens <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
   lang = as.list(lang)
   media = as.list(media)
@@ -173,10 +173,10 @@ getTokens <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age
 #' @param groupType Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.
 #' @export
 #' @examples
-#' getTokenTypes(corpusName = list('childes'),
-#'               corpora = list(list('childes',
+#' getTokenTypes(corpusName = 'childes',
+#'               corpora = c'childes',
 #'                                   'Eng-NA',
-#'                                   'MacWhinney')))
+#'                                   'MacWhinney'))
 getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
   lang = as.list(lang)
   media = as.list(media)
@@ -224,10 +224,10 @@ getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #' @export
 #' @examples
 #' getUtterances(corpusName = 'childes',
-#'               corpora = list(list('childes',
+#'               corpora = c('childes',
 #'                                    'Eng-NA',
 #'                                    'MacWhinney',
-#'                                    '010411a')) )
+#'                                    '010411a'))
 getUtterances <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
 
   corpora = list(as.list(corpora))
@@ -280,8 +280,8 @@ getUtterances <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #' @examples
 #' getCQL(cqlArr=list(list(type="lemma", item="my", freq="once"),
 #'                    list(type="lemma", item="ball", freq="once")),
-#'        corpusName = list('childes'),
-#'        corpora = list(list('childes', 'Eng-NA', 'MacWhinney')))
+#'        corpusName = 'childes',
+#'        corpora = c('childes', 'Eng-NA', 'MacWhinney'))
 getCQL <- function (cqlArr=NULL, corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
   corpora = list(as.list(corpora))
   lang = as.list(lang)
