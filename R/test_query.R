@@ -10,6 +10,8 @@ library(rjson);
 #' @export
 #' @examples
 #' randomTests()
+#'
+#'
 randomTests <- function() {
   # Get sets of transcripts.
   oneTranscript <- getTranscripts(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
