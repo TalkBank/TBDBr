@@ -309,53 +309,53 @@ getNgrams <- function (nGram=NULL, corpusName=NULL, corpora=NULL, lang=NULL, med
 # - Exact word match (type="word").
 # - Match any form of a word (type="lemma").
 # - Or part of speech (type="pos").
-# 
+#
 # Along with type, components have another value, "freq", specifying how many times an item should appear at that location.
 # - Appear once at that location (freq="once").
 # - Appear zero or more times at location (freq="zeroPlus").
 # - Appear one or more times at location (freq="onePlus").
-# 
-# 
+#
+#
 # We append these two-part (type/freq) components together to search for patterns across corpora.
-# 
+#
 # Some examples:
 #   - To find all instances of exactly "go home":
 #   cqlArr=list(
-#     list(type="word", item="go", freq="once"), 
+#     list(type="word", item="go", freq="once"),
 #     list(type="word", item="home", freq="once"))
-# 
+#
 # This matches all utterances containing:
 # "go home"
-# 
 #
-# 
+#
+#
 # - To find all instances of any form of "go" followed by "home", we use type="lemma" for "go":
 #   cqlArr=list(
-#     list(type="lemma", item="go", freq="once"), 
+#     list(type="lemma", item="go", freq="once"),
 #     list(type="word", item="home", freq="once"))
-# 
+#
 # This matches all utterances containing:
 # "go home"
 # "goes home"
 # "went home"
 # "going home"
-# 
-# 
+#
+#
 #
 # - To find all instances of a subject pronoun, followd by any form of "go", followed by one or more adverbs, followed by "home":
 #   cqlArr=list(
-#     list(type="pos", item="pro:sub", freq="once"), 
+#     list(type="pos", item="pro:sub", freq="once"),
 #     list(type="lemma", item="go", freq="once"),
 #     list(type="pos", item="adv", freq="onePlus"),
 #     list(type="word", item="home", freq="once"))
-# 
+#
 # This matches all utterances containing:
 # "they went back home"
 # "they go back home"
 # "he went back home"
 # "we went back home"
 # others...
-# 
+#
 #
 # There are many "item" values for part of speech (type="pos").  See the CHAT manual or the CQL tab on TalkBankDB (https://talkbank.org/DB) for legal part-of-speech codes.
 #
