@@ -20,8 +20,8 @@ getCQL(
 \arguments{
 \item{cqlArr}{Query by grammatical pattern.
 For example, to search for all utterances where a speaker says "go" once followed by adverb occuring one or more times: cqlArr=list(list(type="word", item="go", freq="once"), list(type="pos", item="adv", freq="onePlus")).
-Legal values for type are: "word" to match exact word, "stem" to match all forms of a word stem, "pos" to match parts of speech.
-Legal values for item are any word, word stem, or part of speech code (see CHAT manual or the CQL tab on TalkBankDB (https://talkbank.org/DB) for legal part-of-speech codes).
+Legal values for type are: "word" to match exact word, "lemma" to match all forms of a word, "pos" to match parts of speech.
+Legal values for item are any word, word lemma, or part of speech code (see CHAT manual or the CQL tab on TalkBankDB (https://talkbank.org/DB) for legal part-of-speech codes).
 Legal values for freq are "once", "onePlus", and "zeroPlus".}
 
 \item{corpusName}{Name of corpus to query.  For example, to search within the childes corpus, corpus="childes".  Note this is a character string value (not a list).  Legal values are 'aphasia', 'asd', 'biling', 'ca', 'childes', 'class', 'dementia', 'fluency', 'homebank', 'phon', 'rhd', 'samtale', 'slabank', and 'tbi'.}
@@ -43,15 +43,7 @@ Legal values for freq are "once", "onePlus", and "zeroPlus".}
 \item{groupType}{Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.}
 }
 \description{
-Queryting by "CQL" (Corpus Query Language) lets us search for patterns in the selected transcripts. We construct a CQL query by appending words, lemmas, and parts of speech.
-Adding a type="word" matches that exact word.
-Adding a type="pos" matches a word with that part of speech.
-Adding a type="lemma" matches that word stem. For instance, inserting type="lemma" 'run' matches:
-\itemize{
-\item run
-\item running
-\item ran
-}
+Queryting by "CQL" (Corpus Query Language) lets us search for patterns in the selected transcripts. We construct a CQL query by specifying a search pattern of words, lemmas, and parts of speech.
 }
 \examples{
 getCQL(cqlArr=list(list(type="lemma", item="my", freq="once"),

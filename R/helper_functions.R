@@ -14,27 +14,27 @@ library(rjson);
 # Returns a dataframe with server response.
 getData <- function(query, route) {
   print("Fetching data, please wait...");
-  
+
   query$queryVals$respType <- "JSON";
-  
+
   reqURL <- paste("https://sla2.talkbank.org:1515/", route, sep="");
-  
+
   serverResp <- POST(reqURL, body = query, encode = "json");
-  
+
   # Get the body of POST request.
   txtResp <- content(serverResp, type="text", encoding="UTF-8");
-  
+
   # Convert txtResp from JSON.
   R_obj <- fromJSON(txtResp);
-  
+
   # Convert R_obj to dataframe.
   dataFrame <- setNames(
     data.frame(do.call(rbind, R_obj$data)),
     R_obj$colHeadings
   );
-  
+
   print("Success!");
-  
+
   dataFrame;
 }
 
@@ -45,21 +45,43 @@ getData <- function(query, route) {
 # Returns an R object containing the server JSON response.
 fetchJSON <- function(query, route) {
   print("Fetching data, please wait...");
-  
+
   query$queryVals$respType <- "JSON";
-  
+
   reqURL <- paste("https://sla2.talkbank.org:1515/", route, sep="");
-  
+
   serverResp <- POST(reqURL, body = query, encode = "json");
-  
+
   # Get the body of POST request.
   txtResp <- content(serverResp, type="text", encoding="UTF-8");
-  
+
   # Convert txtResp from JSON.
   R_obj <- fromJSON(txtResp);
-  
+
   print("Success!");
-  
+
+  R_obj;
+}
+
+# This is for queries that don't need a 'success' feedback
+# need to find a way to send an error message if there is no response from the server...
+# Takes:
+# query: A POST query formatted as list of lists.
+# route: The name of the route on server.
+# Returns an R object containing the server JSON response.
+fetchJSON.silent <- function(query, route) {
+  query$queryVals$respType <- "JSON";
+
+  reqURL <- paste("https://sla2.talkbank.org:1515/", route, sep="");
+
+  serverResp <- POST(reqURL, body = query, encode = "json");
+
+  # Get the body of POST request.
+  txtResp <- content(serverResp, type="text", encoding="UTF-8");
+
+  # Convert txtResp from JSON.
+  R_obj <- fromJSON(txtResp);
+
   R_obj;
 }
 

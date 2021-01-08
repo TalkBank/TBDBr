@@ -411,8 +411,7 @@ getCQL <- function (cqlArr=NULL, corpusName=NULL, corpora=NULL, lang=NULL, media
 getPathTrees <- function () {
   query <- list(queryVals = list());
 
-  respData <- fetchJSON(query, 'getPathTrees');
+  respData <- fetchJSON.silent(query, 'getPathTrees');
 
   return( respData );
 }
-
