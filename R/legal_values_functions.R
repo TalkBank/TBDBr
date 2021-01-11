@@ -30,3 +30,29 @@ getLegalValues <- function(){
 
 
 
+#' @title Determine if user's attempted targetPath exists in pathTree.
+#' @description This helper function can be used by other functions to validate user 'corpora' parameter values passed to the query functions.
+#' @param targetPath Vector of strings representing path to validate in pathTree.
+#' @param pathTree The tree of folder and file paths (value from getPathTrees()).
+#' @export
+#' @examples
+#' Example valid path.  Returns TRUE.
+#' validPath(c('respMsg', 'childes', 'childes', 'Clinical'), getPathTrees());
+#' 
+#' Example invalid path.  Prints error method with offending part of path and returns FALSE.
+#' validPath(c('respMsg', 'childes', 'childes', 'somethingThatDoesNotExist'), getPathTrees());
+validPath <- function(targetPath, pathTree) {
+  # Successfully walked down targetPath in pathTree.
+  if(length(targetPath) == 0) {
+    return(TRUE);
+  }
+  
+  # If targetPath so far is valid, continue down path.
+  if(exists(targetPath[1], where=pathTree)) {
+    validPath(targetPath[-1], pathTree[[targetPath[1]]]);
+  }
+  else {
+    print(paste('Invalid path at: ', targetPath[1]));
+    return(FALSE);
+  }
+}
