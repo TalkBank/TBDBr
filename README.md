@@ -26,7 +26,7 @@ library(talkbank)
 
 talkbank allows you to access data from talkbank.org through several
 functions. For example, you can access the utterances for a participant
-in aphasia bank
+in the child language component of talkbank.org:
 
 ``` r
 example_utterances <- getUtterances(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
