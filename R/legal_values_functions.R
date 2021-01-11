@@ -36,17 +36,15 @@ getLegalValues <- function(){
 #' @param pathTree The tree of folder and file paths (value from getPathTrees()).
 #' @export
 #' @examples
-#' Example valid path.  Returns TRUE.
-#' validPath(c('respMsg', 'childes', 'childes', 'Clinical'), getPathTrees());
-#' 
-#' Example invalid path.  Prints error method with offending part of path and returns FALSE.
-#' validPath(c('respMsg', 'childes', 'childes', 'somethingThatDoesNotExist'), getPathTrees());
-validPath <- function(targetPath, pathTree) {
+#' validPath(c('respMsg', 'childes', 'childes', 'Clinical'));
+#'
+#' validPath(c('respMsg', 'childes', 'childes', 'somethingThatDoesNotExist'));
+validPath <- function(targetPath, pathTree=getPathTrees()) {
   # Successfully walked down targetPath in pathTree.
   if(length(targetPath) == 0) {
     return(TRUE);
   }
-  
+
   # If targetPath so far is valid, continue down path.
   if(exists(targetPath[1], where=pathTree)) {
     validPath(targetPath[-1], pathTree[[targetPath[1]]]);
@@ -56,3 +54,5 @@ validPath <- function(targetPath, pathTree) {
     return(FALSE);
   }
 }
+
+

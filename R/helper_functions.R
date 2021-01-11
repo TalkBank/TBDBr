@@ -3,10 +3,12 @@
 #' @import rjson
 #' @import httr
 #' @import prettydoc
+#' @import kableExtra
 # Include library for making GET/POST requests.
 library(httr);
 # Include library for parsing JSON.
 library(rjson);
+library(kableExtra)
 
 # Takes:
 # query: A POST query formatted as list of lists.

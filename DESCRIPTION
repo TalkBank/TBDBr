@@ -25,4 +25,5 @@ Imports:
     httr,
     rjson,
     stats,
-    prettydoc
+    prettydoc,
+    kableExtra
