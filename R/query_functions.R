@@ -24,7 +24,7 @@ library(rjson);
 #' @param designType Query by design type.  For example, to get transcripts from a longitudinal study: designType=list("long")  Legal values are "long" for longitudinal studies, "cross" for cross-sectional studies.
 #' @param activityType Query by activity type.  For example, to get transcripts where the target particpant is engaged in toy play: activityType=list("toyplay").  See the CHAT manual for legal values.
 #' @param groupType Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.
-#' @param auth A boolean to determine if user should be prompted to authenticate in order to access protected collections.
+#' @param auth Boolean to determine if user should be prompted to authenticate in order to access protected collections.
 #' @export
 #' @examples
 #' getTranscripts(corpusName = 'childes',
@@ -48,16 +48,7 @@ getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL
       nsAuth <- authenticate();
     }
 
-    queryVals = list(
-      corpusName=corpusName,
-      corpora=corpora,
-      lang=lang,
-      media=media,
-      age=age,
-      gender=gender,
-      designType=designType,
-      activityType=activityType,
-      groupType=groupType);
+    queryVals = list(corpusName=corpusName, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType);
 
     if(auth == TRUE) {
       queryVals[['nsAuth']] = nsAuth;
@@ -94,13 +85,14 @@ getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL
 #' @param designType Query by design type.  For example, to get transcripts from a longitudinal study: designType=list("long")  Legal values are "long" for longitudinal studies, "cross" for cross-sectional studies.
 #' @param activityType Query by activity type.  For example, to get transcripts where the target particpant is engaged in toy play: activityType=list("toyplay").  See the CHAT manual for legal values.
 #' @param groupType Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.
+#' @param auth Boolean to determine if user should be prompted to authenticate in order to access protected collections.
 #' @export
 #' @examples
 #' getParticipants(corpusName = 'childes',
 #'                 corpora = c('childes',
 #'                                     'Eng-NA',
 #'                                     'MacWhinney'))
-getParticipants <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+getParticipants <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL, auth=FALSE) {
   if(!missing(corpora)){corpora = list(as.list(corpora))}
   if(!missing(lang)){lang = as.list(lang)}
   if(!missing(media)){media = as.list(media)}
@@ -113,9 +105,17 @@ getParticipants <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NUL
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
   if(argsOK) {
-    query <- list(queryVals = list(corpusName=corpusName, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType));
+    if(auth == TRUE) {
+      nsAuth <- authenticate();
+    }
 
-    respData <- getData(query, 'getParticipantSummary');
+    queryVals = list(corpusName=corpusName, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType);
+
+    if(auth == TRUE) {
+      queryVals[['nsAuth']] = nsAuth;
+    }
+
+    respData <- getData(list(queryVals=queryVals), 'getParticipantSummary');
 
     return( respData );
   }
@@ -144,6 +144,7 @@ getParticipants <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NUL
 #' @param designType Query by design type.  For example, to get transcripts from a longitudinal study: designType=list("long")  Legal values are "long" for longitudinal studies, "cross" for cross-sectional studies.
 #' @param activityType Query by activity type.  For example, to get transcripts where the target particpant is engaged in toy play: activityType=list("toyplay").  See the CHAT manual for legal values.
 #' @param groupType Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.
+#' @param auth Boolean to determine if user should be prompted to authenticate in order to access protected collections.
 #' @export
 #' @examples
 #' getTokens(corpusName = 'childes',
@@ -151,7 +152,7 @@ getParticipants <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NUL
 #'                               'Eng-NA',
 #'                               'MacWhinney',
 #'                               '010411a'))
-getTokens <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+getTokens <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL, auth=FALSE) {
   if(!missing(corpora)){corpora = list(as.list(corpora))}
   if(!missing(lang)){lang = as.list(lang)}
   if(!missing(media)){media = as.list(media)}
@@ -164,9 +165,17 @@ getTokens <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
   if(argsOK) {
-    query <- list(queryVals = list(corpusName=corpusName, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType));
+    if(auth == TRUE) {
+      nsAuth <- authenticate();
+    }
 
-    respData <- getData(query, 'getTokenSummary');
+    queryVals = list(corpusName=corpusName, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType);
+
+    if(auth == TRUE) {
+      queryVals[['nsAuth']] = nsAuth;
+    }
+
+    respData <- getData(list(queryVals=queryVals), 'getTokenSummary');
 
     return( respData );
   }
@@ -191,13 +200,14 @@ getTokens <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age
 #' @param designType Query by design type.  For example, to get transcripts from a longitudinal study: designType=list("long")  Legal values are "long" for longitudinal studies, "cross" for cross-sectional studies.
 #' @param activityType Query by activity type.  For example, to get transcripts where the target particpant is engaged in toy play: activityType=list("toyplay").  See the CHAT manual for legal values.
 #' @param groupType Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.
+#' @param auth Boolean to determine if user should be prompted to authenticate in order to access protected collections.
 #' @export
 #' @examples
 #' getTokenTypes(corpusName = 'childes',
 #'               corpora = c('childes',
 #'                                   'Eng-NA',
 #'                                   'MacWhinney'))
-getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL, auth=FALSE) {
   if(!missing(corpora)){corpora = list(as.list(corpora))}
   if(!missing(lang)){lang = as.list(lang)}
   if(!missing(media)){media = as.list(media)}
@@ -210,9 +220,17 @@ getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
   if(argsOK) {
-    query <- list(queryVals = list(corpusName=corpusName, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType));
+    if(auth == TRUE) {
+      nsAuth <- authenticate();
+    }
 
-    respData <- getData(query, 'getTokenTypes');
+    queryVals = list(corpusName=corpusName, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType);
+
+    if(auth == TRUE) {
+      queryVals[['nsAuth']] = nsAuth;
+    }
+
+    respData <- getData(list(queryVals=queryVals), 'getTokenTypes');
 
     return( respData );
   }
@@ -242,6 +260,7 @@ getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #' @param designType Query by design type.  For example, to get transcripts from a longitudinal study: designType=list("long")  Legal values are "long" for longitudinal studies, "cross" for cross-sectional studies.
 #' @param activityType Query by activity type.  For example, to get transcripts where the target particpant is engaged in toy play: activityType=list("toyplay").  See the CHAT manual for legal values.
 #' @param groupType Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.
+#' @param auth Boolean to determine if user should be prompted to authenticate in order to access protected collections.
 #' @export
 #' @examples
 #' getUtterances(corpusName = 'childes',
@@ -249,7 +268,7 @@ getTokenTypes <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #'                                    'Eng-NA',
 #'                                    'MacWhinney',
 #'                                    '010411a'))
-getUtterances <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+getUtterances <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL, auth=FALSE) {
 
   if(!missing(corpora)){corpora = list(as.list(corpora))}
   if(!missing(lang)){lang = as.list(lang)}
@@ -263,9 +282,17 @@ getUtterances <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
   if(argsOK) {
-    query <- list(queryVals = list(corpusName=corpusName, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType));
+    if(auth == TRUE) {
+      nsAuth <- authenticate();
+    }
 
-    respData <- getData(query, 'getUtteranceSummary');
+    queryVals = list(corpusName=corpusName, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType);
+
+    if(auth == TRUE) {
+      queryVals[['nsAuth']] = nsAuth;
+    }
+
+    respData <- getData(list(queryVals=queryVals), 'getUtteranceSummary');
 
     return( respData );
   }
@@ -288,6 +315,7 @@ getUtterances <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #' @param designType Query by design type.  For example, to get transcripts from a longitudinal study: designType=list("long")  Legal values are "long" for longitudinal studies, "cross" for cross-sectional studies.
 #' @param activityType Query by activity type.  For example, to get transcripts where the target particpant is engaged in toy play: activityType=list("toyplay").  See the CHAT manual for legal values.
 #' @param groupType Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.
+#' @param auth Boolean to determine if user should be prompted to authenticate in order to access protected collections.
 #' @export
 #' @examples
 #' getNgrams(nGram=c("3", "word"),
@@ -296,7 +324,7 @@ getUtterances <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL,
 #'                               'Eng-NA',
 #'                               'MacWhinney',
 #'                               '010411a'));
-getNgrams <- function (nGram=NULL, corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+getNgrams <- function (nGram=NULL, corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL, auth=FALSE) {
   if(!missing(nGram)){nGram = list(size=nGram[1], type = nGram[2])}
   if(!missing(corpora)){corpora = list(as.list(corpora))}
   if(!missing(lang)){lang = as.list(lang)}
@@ -306,12 +334,21 @@ getNgrams <- function (nGram=NULL, corpusName=NULL, corpora=NULL, lang=NULL, med
   if(!missing(designType)){designType = as.list(designType)}
   if(!missing(activityType)){activityType = as.list(activityType)}
   if(!missing(groupType)){groupType = as.list(groupType)}
+
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
   if(argsOK) {
-    query <- list(queryVals = list(corpusName=corpusName, nGram=nGram, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType));
+    if(auth == TRUE) {
+      nsAuth <- authenticate();
+    }
 
-    respData <- getData(query, 'getNgrams');
+    queryVals = list(corpusName=corpusName, nGram=nGram, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType);
+
+    if(auth == TRUE) {
+      queryVals[['nsAuth']] = nsAuth;
+    }
+
+    respData <- getData(list(queryVals=queryVals), 'getNgrams');
 
     return( respData );
   }
@@ -392,13 +429,14 @@ getNgrams <- function (nGram=NULL, corpusName=NULL, corpora=NULL, lang=NULL, med
 #' @param designType Query by design type.  For example, to get transcripts from a longitudinal study: designType=list("long")  Legal values are "long" for longitudinal studies, "cross" for cross-sectional studies.
 #' @param activityType Query by activity type.  For example, to get transcripts where the target particpant is engaged in toy play: activityType=list("toyplay").  See the CHAT manual for legal values.
 #' @param groupType Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.
+#' @param auth Boolean to determine if user should be prompted to authenticate in order to access protected collections.
 #' @export
 #' @examples
 #' getCQL(cqlArr=list(list(type="lemma", item="my", freq="once"),
 #'                    list(type="lemma", item="ball", freq="once")),
 #'        corpusName = 'childes',
 #'        corpora = c('childes', 'Eng-NA', 'MacWhinney'))
-getCQL <- function (cqlArr=NULL, corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+getCQL <- function (cqlArr=NULL, corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL, auth=FALSE) {
   if(!missing(corpora)){corpora = list(as.list(corpora))}
   if(!missing(lang)){lang = as.list(lang)}
   if(!missing(media)){media = as.list(media)}
@@ -411,9 +449,17 @@ getCQL <- function (cqlArr=NULL, corpusName=NULL, corpora=NULL, lang=NULL, media
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
   if(argsOK) {
-    query <- list(queryVals = list(cqlArr=cqlArr, corpusName=corpusName, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType));
+    if(auth == TRUE) {
+      nsAuth <- authenticate();
+    }
 
-    respData <- getData(query, 'cql');
+    queryVals = list(cqlArr=cqlArr, corpusName=corpusName, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType);
+
+    if(auth == TRUE) {
+      queryVals[['nsAuth']] = nsAuth;
+    }
+
+    respData <- getData(list(queryVals=queryVals),  'cql');
 
     return( respData );
   }
