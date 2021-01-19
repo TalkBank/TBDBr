@@ -43,4 +43,13 @@ randomTests <- function() {
 
   # Get English transcripts form homebank.
   engLangHomebankTranscripts <- getTranscripts(corpusName = 'homebank', lang = 'eng');
+
+
+  # Without auth=TRUE, returns nothing.
+  protectedTranscripts <- getTranscripts(corpusName = 'aphasia', corpora = list(list('aphasia', 'English', 'Aphasia', 'Adler')));
+  # With auth=TRUE, returns transcript list if user auth succeeds.
+  protectedTranscripts <- getTranscripts(corpusName = 'aphasia', corpora = list(list('aphasia', 'English', 'Aphasia', 'Adler')), auth=TRUE);
+
+  # Get 3-grams of words from protected corpora.
+  protectedNgrams <- getNgrams(nGram=list(size="3", type="word"), corpusName = 'aphasia', corpora = list(list('aphasia', 'English', 'Aphasia', 'Adler')), auth=TRUE );
 }
