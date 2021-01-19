@@ -117,21 +117,42 @@ authenticate <- function() {
 
   another = 'y';
   while(another == 'y') {
-    path = readline("Path to authenticate: ");
-    #userID = readline("User ID: "); # note - dow done with the shiny app. the getPass is another option but may not work on windows computers...
+    # path = readline("Path to authenticate: ");
+    #userID = readline("User ID: "); # note - now done with the shiny app.
     #password = getPass::getPass("Password: ");
-    login = runGadget(loginApp, viewer = dialogViewer("Enter talkbank.org username and password", width = 400, height = 200))
-    userID = login[[1]]
-    password = login[[2]]
+    login = runGadget(loginApp, viewer = dialogViewer("Enter talkbank.org username and password for this Corpus", width = 400, height = 400))
+    path = login$corpusname
+    userID = login$username
+    password = login$password
 
-    authReqs[[length(authReqs)+1]] <- list(path=path, userID=userID, pswd=password);
-
-    another <- readline("Authenticate another? (Y/N): ");
-    if(tolower(another) != 'y') {
-      return(authReqs);
-    }
+    authReqs[[length(authReqs)+1]] <- list(path=path, userID=userID, pswd=password)
+    another = tolower(readline("Authenticate another? (Y/N): ")) #ifelse(login$auth_another == 'Yes', 'y', 'n'); # I have no idea why this doesn't work....
+    return(authReqs);
   }
+
 }
+
+# very basic app to interactively retrieve password without echo-ing result
+loginApp <- shinyApp(
+  basicPage(
+    selectInput("corpusName", "Corpus Name", choices= c('aphasia', 'asd', 'biling', 'dementia', 'fluency', 'rhd', 'tbi')),
+    textInput("username", "Username"),
+    passwordInput("password", "Password"),
+    #radioButtons("auth_another", "Authenticate another?", choices = c("Yes", "No"), selected = "No"),
+    shiny::actionButton("submit", "Submit")
+  ),
+  function(input, output) {
+    observe({
+      if (input$submit != 0)
+        stopApp(list(
+          corpusname = isolate(input$corpusName),
+          username = isolate(input$username),
+          password = isolate(input$password)#,
+         # auth_another = isolate(input$auth_another)
+        ))
+    })
+  }
+)
 
 
 # Verify type and values of arguments passed as query to getData().
@@ -270,20 +291,4 @@ getPathTrees <- function () {
 }
 
 
-# very basic app to interactively retrieve password without echo-ing result
-loginApp <- shinyApp(
-  basicPage(
-    textInput("username", "User name"),
-    passwordInput("password", "Password"),
-    shiny::actionButton("submit", "Submit")
-  ),
-  function(input, output) {
-    observe({
-      if (input$submit != 0)
-        stopApp(list(
-          username = isolate(input$username),
-          password = isolate(input$password)
-        ))
-    })
-  }
-)
+
