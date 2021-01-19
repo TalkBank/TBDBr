@@ -24,13 +24,14 @@ library(rjson);
 #' @param designType Query by design type.  For example, to get transcripts from a longitudinal study: designType=list("long")  Legal values are "long" for longitudinal studies, "cross" for cross-sectional studies.
 #' @param activityType Query by activity type.  For example, to get transcripts where the target particpant is engaged in toy play: activityType=list("toyplay").  See the CHAT manual for legal values.
 #' @param groupType Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.
+#' @param auth A boolean to determine if user should be prompted to authenticate in order to access protected collections.
 #' @export
 #' @examples
 #' getTranscripts(corpusName = 'childes',
 #'                corpora = c('childes',
 #'                                    'Eng-NA',
 #'                                    'MacWhinney'))
-getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL) {
+getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL, age=NULL, gender=NULL, designType=NULL, activityType=NULL, groupType=NULL, auth=FALSE) {
   if(!missing(corpora)){corpora = list(as.list(corpora))}
   if(!missing(lang)){lang = as.list(lang)}
   if(!missing(media)){media = as.list(media)}
@@ -43,9 +44,26 @@ getTranscripts <- function (corpusName=NULL, corpora=NULL, lang=NULL, media=NULL
   argsOK <- verifyArg(corpusName, corpora, lang, media, age, gender, designType, activityType, groupType);
 
   if(argsOK) {
-    query <- list(queryVals = list(corpusName=corpusName, corpora=corpora, lang=lang, media=media, age=age, gender=gender, designType=designType, activityType=activityType, groupType=groupType));
+    if(auth == TRUE) {
+      nsAuth <- authenticate();
+    }
 
-    respData <- getData(query, 'getTranscriptSummary');
+    queryVals = list(
+      corpusName=corpusName,
+      corpora=corpora,
+      lang=lang,
+      media=media,
+      age=age,
+      gender=gender,
+      designType=designType,
+      activityType=activityType,
+      groupType=groupType);
+
+    if(auth == TRUE) {
+      queryVals[['nsAuth']] = nsAuth;
+    }
+
+    respData <- getData(list(queryVals=queryVals), 'getTranscriptSummary');
 
     return( respData );
   }
