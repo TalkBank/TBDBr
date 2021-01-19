@@ -29,15 +29,34 @@ getData <- function(query, route) {
   # Convert txtResp from JSON.
   R_obj <- fromJSON(txtResp);
 
-  # Convert R_obj to dataframe.
-  dataFrame <- setNames(
-    data.frame(do.call(rbind, R_obj$data)),
-    R_obj$colHeadings
-  );
+  # If received requested data (and not error object), create and return data frame.
+  if("colHeadings" %in% names(R_obj) ){
+    if(length(R_obj$data) == 0) {
+      print('No data returned.  Note: To access protected data, you need to authenticate.');
+    }
+    else {
+      # Convert R_obj to dataframe.
+      dataFrame <- setNames(
+        data.frame(do.call(rbind, R_obj$data)),
+        R_obj$colHeadings
+      );
 
-  print("Success!");
+      print("Success!");
 
-  dataFrame;
+      dataFrame;
+    }
+  }
+  # Process and return non-data (error) object.
+  else {
+    if(R_obj$respMsg == 'pathError'){
+      cat('AUTHENTICATION ERROR: Path name \"', R_obj$at, '\" incorrect (or path may not require authentication).');
+    }
+    else if(R_obj$respMsg == 'authError'){
+      cat('AUTHENTICATION ERROR: ID or password incorrect for path \"', R_obj$at, '\".');
+    }
+
+    R_obj;
+  }
 }
 
 
