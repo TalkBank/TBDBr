@@ -4,11 +4,15 @@
 #' @import httr
 #' @import prettydoc
 #' @import kableExtra
+#' @import shiny
+
+
 # Include library for making GET/POST requests.
 library(httr);
 # Include library for parsing JSON.
 library(rjson);
 library(kableExtra)
+library(shiny) # for password no echo
 
 # Takes:
 # query: A POST query formatted as list of lists.
@@ -114,8 +118,11 @@ authenticate <- function() {
   another = 'y';
   while(another == 'y') {
     path = readline("Path to authenticate: ");
-    userID = readline("User ID: ");
-    password = readline("Password: ");
+    #userID = readline("User ID: "); # note - dow done with the shiny app. the getPass is another option but may not work on windows computers...
+    #password = getPass::getPass("Password: ");
+    login = runGadget(loginApp, viewer = dialogViewer("Enter talkbank.org username and password", width = 400, height = 200))
+    userID = login[[1]]
+    password = login[[2]]
 
     authReqs[[length(authReqs)+1]] <- list(path=path, userID=userID, pswd=password);
 
@@ -247,3 +254,36 @@ verifyArg <- function (corpusName, corpora, lang, media, age, gender, designType
   # Arguments deemed valid.
   return(TRUE);
 }
+
+# Get path tree to every doc in TalkBank.
+# This can be useful for:
+# - Verifying "corpora" param passed to query functions by walking down and verifying path in object returned here.  Can give user feedback on what part of path is incorrect.
+# - GUIs to select paths.
+# - Auto-complete paths.
+# - Other things...
+getPathTrees <- function () {
+  query <- list(queryVals = list());
+
+  respData <- fetchJSON.silent(query, 'getPathTrees');
+
+  return( respData );
+}
+
+
+# very basic app to interactively retrieve password without echo-ing result
+loginApp <- shinyApp(
+  basicPage(
+    textInput("username", "User name"),
+    passwordInput("password", "Password"),
+    shiny::actionButton("submit", "Submit")
+  ),
+  function(input, output) {
+    observe({
+      if (input$submit != 0)
+        stopApp(list(
+          username = isolate(input$username),
+          password = isolate(input$password)
+        ))
+    })
+  }
+)

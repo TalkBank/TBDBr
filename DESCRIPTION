@@ -26,4 +26,5 @@ Imports:
     rjson,
     stats,
     prettydoc,
-    kableExtra
+    kableExtra,
+    shiny
