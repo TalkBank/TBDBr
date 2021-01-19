@@ -13,7 +13,8 @@ getTokenTypes(
   gender = NULL,
   designType = NULL,
   activityType = NULL,
-  groupType = NULL
+  groupType = NULL,
+  auth = FALSE
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ getTokenTypes(
 \item{activityType}{Query by activity type.  For example, to get transcripts where the target particpant is engaged in toy play: activityType=list("toyplay").  See the CHAT manual for legal values.}
 
 \item{groupType}{Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.}
+
+\item{auth}{Boolean to determine if user should be prompted to authenticate in order to access protected collections.}
 }
 \description{
 Queries a table with all the words from the selected transcripts condensed into "types" based on word form and part of speech. Each row has:
