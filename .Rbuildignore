@@ -4,7 +4,4 @@
 ^README\.Rmd$
 ^data-raw$
 ^\.github$
-^Icon$
-^Icon/r$
-^Icon?$
-^Icon.r$
+^Icon[^M]$
