@@ -107,6 +107,26 @@ fetchJSON.silent <- function(query, route) {
 }
 
 
+# Prompts user to enter set of paths and userIDs/passwords requiring authentication for a query.
+authenticate <- function() {
+  authReqs <- list();
+
+  another = 'y';
+  while(another == 'y') {
+    path = readline("Path to authenticate: ");
+    userID = readline("User ID: ");
+    password = readline("Password: ");
+
+    authReqs[[length(authReqs)+1]] <- list(path=path, userID=userID, pswd=password);
+
+    another <- readline("Authenticate another? (Y/N): ");
+    if(tolower(another) != 'y') {
+      return(authReqs);
+    }
+  }
+}
+
+
 # Verify type and values of arguments passed as query to getData().
 verifyArg <- function (corpusName, corpora, lang, media, age, gender, designType, activityType, groupType) {
 
