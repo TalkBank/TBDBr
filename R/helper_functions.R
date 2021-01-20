@@ -126,9 +126,9 @@ authenticate <- function() {
     password = login$password
 
     authReqs[[length(authReqs)+1]] <- list(path=path, userID=userID, pswd=password)
-    another = tolower(readline("Authenticate another? (Y/N): ")) #ifelse(login$auth_another == 'Yes', 'y', 'n'); # I have no idea why this doesn't work....
-    return(authReqs);
+    another = tolower(readline("Press any key to continue...")) #ifelse(login$auth_another == 'Yes', 'y', 'n'); # I have no idea why this doesn't work....
   }
+  return(authReqs);
 
 }
 
@@ -148,7 +148,7 @@ loginApp <- shinyApp(
           corpusname = isolate(input$corpusName),
           username = isolate(input$username),
           password = isolate(input$password)#,
-         # auth_another = isolate(input$auth_another)
+          # auth_another = isolate(input$auth_another)
         ))
     })
   }
