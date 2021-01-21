@@ -42,7 +42,8 @@ library(talkbank)
 talkbank allows you to access data from talkbank.org through several functions. For example, you can access the utterances for a participant in the child language component of talkbank.org:
 
 ```{r example}
-example_utterances <- getUtterances(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
+example_utterances <- getUtterances(corpusName = 'childes',
+                                    corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
 example_utterances[1:5,]
 ```
 
@@ -81,7 +82,9 @@ validPath(c('respMsg', 'childes', 'childes', 'somethingThatDoesNotExist'));
 To access clinical collections, use the argument *auth = TRUE* in any function. A brief pop-up will ask you to select the clinical bank you are trying to access and to enter the correct username and password. 
 
 ```{r auth, eval=F}
-aphasia_transcrips <- getTranscripts(corpusName = 'aphasia', corpora = c('aphasia', 'English', 'Aphasia', 'Adler'), auth = TRUE);
+aphasia_transcrips <- getTranscripts(corpusName = 'aphasia',
+                                     corpora = c('aphasia', 'English', 'Aphasia', 'Adler'),
+                                     auth = TRUE);
 ```
 
 

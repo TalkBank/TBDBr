@@ -49,7 +49,8 @@ functions. For example, you can access the utterances for a participant
 in the child language component of talkbank.org:
 
 ``` r
-example_utterances <- getUtterances(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
+example_utterances <- getUtterances(corpusName = 'childes',
+                                    corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
 #> [1] "Fetching data, please wait..."
 #> [1] "Success!"
 example_utterances[1:5,]
@@ -112,5 +113,7 @@ function. A brief pop-up will ask you to select the clinical bank you
 are trying to access and to enter the correct username and password.
 
 ``` r
-aphasia_transcrips <- getTranscripts(corpusName = 'aphasia', corpora = c('aphasia', 'English', 'Aphasia', 'Adler'), auth = TRUE);
+aphasia_transcrips <- getTranscripts(corpusName = 'aphasia',
+                                     corpora = c('aphasia', 'English', 'Aphasia', 'Adler'),
+                                     auth = TRUE);
 ```
