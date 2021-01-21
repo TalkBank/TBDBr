@@ -8,8 +8,28 @@
 [![R-CMD-check](https://github.com/rbcavanaugh/talkbank/workflows/R-CMD-check/badge.svg)](https://github.com/rbcavanaugh/talkbank/actions)
 <!-- badges: end -->
 
-The goal of talkbank is to provide easy access to talkbankDB through an
-R api.
+The goal of the R package ‘talkbank’ is to provide easy access to
+talkbank data through through an R api.
+
+TalkBank (www.talkbank.org) is a vast collection of audio and video
+recordings across more than 50 languages linked to richly annotated
+transcriptions. The goal of TalkBank is to foster fundamental research
+in the study of human communication with an emphasis on spoken
+communication. The collection includes repositories in 14 research
+areas, including language development, adult conversation,
+multilingualism, and disorders of communication. These resources are
+freely available to support research of human language and
+communication. Talkbank has been funded by the National Science
+Foundation and National Institute of Health since 1999.
+
+TalkBankDB (database) lets you explore TalkBank’s media and transcripts,
+specify data to be extracted, and pass these data on to statistical
+programs for further analysis. The R package ‘talkbank’ provides easy
+access to all information within TalkBankDB, including clinical
+collections.<sup>1</sup>
+
+<sup>1</sup> Clinical Banks are password protected. Visit
+www.talkbank.org to learn about gaining access to these collections.
 
 ## Installation
 
@@ -47,29 +67,50 @@ example_utterances[1:5,]
 #> 5            mm nice fiu     25.596  29.933
 ```
 
-The available functions for accessing different datatypes are:
+The available functions for accessing different datatypes are below. The
+arguments for each function are documented, which can be accessed by
+typing ?functionName (e.g. ?getTranscriots()).
 
 ``` r
 getTranscripts()
 getParticipants()
 getTokens()
+getTokenTypes()
 getUtterances()
 getNgrams()
-getTokenTypes()
 getCQL()
 ```
 
-These arguments for each function are documented, which can be accessed
-by typing ?functionName (e.g. ?getTranscriots()). Two helper functions
-are available to describe the arguments available for each function.
-getLegalValues() describes options available at each level of the
-database. validPath() will return whether or not a given path is valid,
-and where it is incorrect if applicable.
+Because the options for each talkbank collection and function vary, 2
+functions are available to determine the possible options.
+
+getLegalValues() will interactively return options available at each
+level of the database. 2) validPath() will
 
 ``` r
 getLegalValues()
 ```
 
-Currently, talkpath only works for non-clinical banks at talkbank.org.
-For access to the clinical banks (e.g. aphaisaBank, dementiaBank), use
-talkbankDB.org.
+validPath() will return whether a given query is valid
+
+``` r
+validPath(c('respMsg', 'childes', 'childes', 'Clinical'));
+#> [1] TRUE
+```
+
+If the query is not valid, it will return which level of the query is
+incorrect
+
+``` r
+validPath(c('respMsg', 'childes', 'childes', 'somethingThatDoesNotExist'));
+#> [1] "Invalid path at:  somethingThatDoesNotExist"
+#> [1] FALSE
+```
+
+To access clinical collections, use the argument *auth = TRUE* in any
+function. A brief pop-up will ask you to select the clinical bank you
+are trying to access and to enter the correct username and password.
+
+``` r
+aphasia_transcrips <- getTranscripts(corpusName = 'aphasia', corpora = c('aphasia', 'English', 'Aphasia', 'Adler'), auth = TRUE);
+```
