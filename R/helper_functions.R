@@ -2,7 +2,6 @@
 #' @importFrom stats setNames
 #' @import rjson
 #' @import httr
-#' @import prettydoc
 #' @import kableExtra
 #' @import shiny
 

@@ -26,9 +26,7 @@ TalkBankDB (database) lets you explore TalkBank’s media and transcripts,
 specify data to be extracted, and pass these data on to statistical
 programs for further analysis. The R package ‘talkbank’ provides easy
 access to all information within TalkBankDB, including clinical
-collections.<sup>1</sup>
-
-<sup>1</sup> Clinical Banks are password protected. Visit
+collections. Clinical Banks are password protected. Visit
 www.talkbank.org to learn about gaining access to these collections.
 
 ## Installation
