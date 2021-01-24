@@ -5,3 +5,6 @@
 ^data-raw$
 ^\.github$
 ^Icon[^M]$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
