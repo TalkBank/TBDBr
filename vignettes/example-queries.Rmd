@@ -37,7 +37,7 @@ Queries a table where each row represents a transcript.
 ```{r transcripts}
 # Get penglish-north american transcripts in in childes 
  transcripts <- getTranscripts(corpusName = 'childes',
-                                     corpora = c('childes', 'Eng-NA'))
+                               corpora = c('childes', 'Eng-NA'))
 ```
 
 ```{r transcript output, echo = F}
@@ -67,7 +67,8 @@ Queries a table where each row represents a participant (speaker) listed in a tr
 ```{r participants}
 # Get english-north american participants in childes 
  participants <- getParticipants(corpusName = 'childes',
-                                     corpora = c('childes', 'Eng-NA'))
+                                 corpora = c('childes',
+                                             'Eng-NA'))
 ```
 
 ```{r participant output, echo = F}
@@ -92,7 +93,11 @@ Queries a table with all the words from the selected transcripts, one word (toke
 
 ```{r tokens}
 # Get tokens (words) from one transcript.
-tokens <- getTokens(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
+tokens <- getTokens(corpusName = 'childes',
+                    corpora = c('childes',
+                                'Eng-NA',
+                                'MacWhinney',
+                                '010411a'));
 ```
 
 ```{r token output, echo = F}
@@ -112,7 +117,10 @@ Queries a table with all the words from the selected transcripts condensed into 
 
 ```{r tokentypes}
 # Get token types from MacWhinney set.
-token.types <- getTokenTypes(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney'));
+token.types <- getTokenTypes(corpusName = 'childes',
+                             corpora = c('childes',
+                                         'Eng-NA',
+                                         'MacWhinney'));
 ```
 
 ```{r tokentype output, echo = F}
@@ -138,7 +146,11 @@ Queries a table with all the words from the selected transcripts, one word (toke
 * End time of utterance in associated media.
 
 ```{r utterances}
-utterances <- getUtterances(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'))
+utterances <- getUtterances(corpusName = 'childes',
+                            corpora = c('childes',
+                                        'Eng-NA',
+                                        'MacWhinney',
+                                        '010411a'))
 ```
 
 ```{r utterance output, echo = F}
@@ -157,7 +169,12 @@ Queries to get n-grams of specified size (n) and type.
 
 ```{r ngrams}
 # Get 3-grams of words from one transcript.
-ngrams <- getNgrams(nGram=c("3", "word"), corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
+ngrams <- getNgrams(nGram=c("3", "word"),
+                    corpusName = 'childes',
+                    corpora = c('childes',
+                                'Eng-NA',
+                                'MacWhinney',
+                                '010411a'));
 ```
 
 ```{r ngram output, echo = F}
@@ -172,7 +189,10 @@ Queryting by "CQL" (Corpus Query Language) lets us search for patterns in the se
 
 ```{r cql}
 # Query for text pattern "my ball" as lemma in MacWhinney set.
-cql.myball <- getCQL(cqlArr=list(list(type="lemma", item="my", freq="once"), list(type="lemma", item="ball", freq="once")), corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney'));
+cql.myball <- getCQL(cqlArr=list(list(type="lemma", item="my", freq="once"),
+                                 list(type="lemma", item="ball", freq="once")), 
+                     corpusName = 'childes',
+                     corpora = c('childes', 'Eng-NA', 'MacWhinney'));
 ```
 
 ```{r cql output, echo = F}

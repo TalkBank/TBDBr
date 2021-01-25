@@ -54,7 +54,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/Using_the_TalkBank_R_Api.html">Using the TalkBank R Api</a>
+      <a href="articles/example-queries.html">Example Queries</a>
     </li>
   </ul>
 </li>
@@ -83,9 +83,9 @@
 <a href="#talkbank" class="anchor"></a>talkbank</h1></div>
 <!-- badges: start -->
 
-<p>The goal of the R package ‘talkbank’ is to provide easy access to talkbank data through through an R api.</p>
-<p>TalkBank (www.talkbank.org) is a vast collection of audio and video recordings across more than 50 languages linked to richly annotated transcriptions. The goal of TalkBank is to foster fundamental research in the study of human communication with an emphasis on spoken communication. The collection includes repositories in 14 research areas, including language development, adult conversation, multilingualism, and disorders of communication. These resources are freely available to support research of human language and communication. Talkbank has been funded by the National Science Foundation and National Institute of Health since 1999.</p>
-<p>TalkBankDB (database) lets you explore TalkBank’s media and transcripts, specify data to be extracted, and pass these data on to statistical programs for further analysis. The R package ‘talkbank’ provides easy access to all information within TalkBankDB, including clinical collections. Clinical Banks are password protected. Visit www.talkbank.org to learn about gaining access to these collections.</p>
+<p>The goal of the R package ‘talkbank’ is to provide easy access to TalkBank data through through an R api.</p>
+<p>TalkBank (www.talkbank.org) is a vast collection of audio and video recordings across more than 50 languages linked to richly annotated transcriptions. The goal of TalkBank is to foster fundamental research in the study of human communication with an emphasis on spoken communication. The collection includes repositories in 14 research areas, including language development, adult conversation, multilingualism, and disorders which affect communication. These collections are freely available to support the research of human language and communication. TalkBank has been funded by the National Science Foundation and National Institute of Health since 1999.</p>
+<p>TalkBankDB (database) lets you explore TalkBank’s media and transcripts, specify data to be extracted, and pass these data on to statistical programs for further analysis. This package ‘talkbank’ provides easy access to all information within TalkBankDB, including clinical collections. Clinical Banks are password protected. Visit www.talkbank.org to learn about gaining access to these collections.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -126,11 +126,10 @@
 <span class="fu"><a href="reference/getUtterances.html">getUtterances</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu"><a href="reference/getNgrams.html">getNgrams</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu"><a href="reference/getCQL.html">getCQL</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>Because the options for each talkbank collection and function vary, 2 functions are available to determine the possible options.</p>
-<p>getLegalValues() will interactively return options available at each level of the database. 2) validPath() will</p>
+<p>Because the options for each talkbank collection and function vary, the getLegalValues() function can help determine the possible options. getLegalValues() will interactively return options available at each level of the database.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/getLegalValues.html">getLegalValues</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>validPath() will return whether a given query is valid</p>
+<p>For troubleshooting, an additional function, validPath(), will return whether a given query is valid.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/validPath.html">validPath</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'respMsg'</span>, <span class="st">'childes'</span>, <span class="st">'childes'</span>, <span class="st">'Clinical'</span><span class="op">)</span><span class="op">)</span>;
 <span class="co">#&gt; [1] TRUE</span></code></pre></div>
@@ -139,7 +138,7 @@
 <code class="sourceCode R"><span class="fu"><a href="reference/validPath.html">validPath</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'respMsg'</span>, <span class="st">'childes'</span>, <span class="st">'childes'</span>, <span class="st">'somethingThatDoesNotExist'</span><span class="op">)</span><span class="op">)</span>;
 <span class="co">#&gt; [1] "Invalid path at:  somethingThatDoesNotExist"</span>
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
-<p>To access clinical collections, use the argument <em>auth = TRUE</em> in any function. A brief pop-up will ask you to select the clinical bank you are trying to access and to enter the correct username and password.</p>
+<p>To access clinical collections, use the argument <em>auth = TRUE</em>. A pop-up will ask you to select the clinical bank you are trying to access and to enter the correct username and password for that database</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">aphasia_transcrips</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getTranscripts.html">getTranscripts</a></span><span class="op">(</span>corpusName <span class="op">=</span> <span class="st">'aphasia'</span>,
                                      corpora <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'aphasia'</span>, <span class="st">'English'</span>, <span class="st">'Aphasia'</span>, <span class="st">'Adler'</span><span class="op">)</span>,
@@ -168,7 +167,8 @@
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>First Last <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/YOUR-ORCID-ID" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>John Kowalski <br><small class="roles"> Author </small>  </li>
+<li>Rob Cavanaugh <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 
@@ -183,7 +183,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by First Last.</p>
+  <p>Developed by John Kowalski, Rob Cavanaugh.</p>
 </div>
 
 <div class="pkgdown">

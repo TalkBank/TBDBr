@@ -2,6 +2,6 @@ pandoc: 2.11.2
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
-  Using_the_TalkBank_R_Api: Using_the_TalkBank_R_Api.html
-last_built: 2021-01-24T23:41Z
+  example-queries: example-queries.html
+last_built: 2021-01-25T03:33Z
 

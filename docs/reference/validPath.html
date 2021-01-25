@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Determine if user's attempted targetPath exists in pathTree. — validPath • talkbank</title>
+<title>Check for valid path — validPath • talkbank</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Determine if user's attempted targetPath exists in pathTree. — validPath" />
+<meta property="og:title" content="Check for valid path — validPath" />
 <meta property="og:description" content="This helper function can be used by other functions to validate user 'corpora' parameter values passed to the query functions." />
 
 
@@ -95,7 +95,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Using_the_TalkBank_R_Api.html">Using the TalkBank R Api</a>
+      <a href="../articles/example-queries.html">Example Queries</a>
     </li>
   </ul>
 </li>
@@ -120,8 +120,8 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Determine if user's attempted targetPath exists in pathTree.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rbcavanaugh/talkbank/blob/master/R/legal_values_functions.R'><code>R/legal_values_functions.R</code></a></small>
+    <h1>Check for valid path</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rbcavanaugh/talkbank/blob/master/R/helper_functions.R'><code>R/helper_functions.R</code></a></small>
     <div class="hidden name"><code>validPath.Rd</code></div>
     </div>
 
@@ -129,7 +129,7 @@
     <p>This helper function can be used by other functions to validate user 'corpora' parameter values passed to the query functions.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>validPath</span><span class='op'>(</span><span class='va'>targetPath</span>, pathTree <span class='op'>=</span> <span class='fu'>getPathTrees</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>validPath</span><span class='op'>(</span><span class='va'>targetPath</span>, pathTree <span class='op'>=</span> <span class='fu'><a href='getPathTrees.html'>getPathTrees</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,10 +146,10 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='fu'>validPath</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'respMsg'</span>, <span class='st'>'childes'</span>, <span class='st'>'childes'</span>, <span class='st'>'Clinical'</span><span class='op'>)</span><span class='op'>)</span>;
-
+    <pre class="examples"><div class='input'><span class='fu'>validPath</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'respMsg'</span>, <span class='st'>'childes'</span>, <span class='st'>'childes'</span>, <span class='st'>'Clinical'</span><span class='op'>)</span><span class='op'>)</span>;
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 <span class='fu'>validPath</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'respMsg'</span>, <span class='st'>'childes'</span>, <span class='st'>'childes'</span>, <span class='st'>'somethingThatDoesNotExist'</span><span class='op'>)</span><span class='op'>)</span>;
-</pre>
+</div><div class='output co'>#&gt; [1] "Invalid path at:  somethingThatDoesNotExist"</div><div class='output co'>#&gt; [1] FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -161,7 +161,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by First Last.</p>
+  <p>Developed by John Kowalski, Rob Cavanaugh.</p>
 </div>
 
 <div class="pkgdown">

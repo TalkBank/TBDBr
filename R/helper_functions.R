@@ -321,8 +321,6 @@ validPath <- function(targetPath, pathTree=getPathTrees()) {
 #' * Choose from those options to progres to the next level of available options
 #' * All names are case-sensitive
 #' @export
-#' @examples
-#' getLegalValues()
 getLegalValues <- function(){
   trees = getPathTrees()
   print('Use this function to get arguments for talkbank functions')

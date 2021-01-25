@@ -8,10 +8,6 @@ library(rjson);
 #'
 #' @description This function contains a random set of example queries.
 #' @export
-#' @examples
-#' randomTests()
-#'
-#'
 randomTests <- function() {
   # Get sets of transcripts.
   oneTranscript <- getTranscripts(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
@@ -45,11 +41,11 @@ randomTests <- function() {
   engLangHomebankTranscripts <- getTranscripts(corpusName = 'homebank', lang = 'eng');
 
 
-  # Without auth=TRUE, returns nothing.
-  protectedTranscripts <- getTranscripts(corpusName = 'aphasia', corpora = c('aphasia', 'English', 'Aphasia', 'Adler'));
-  # With auth=TRUE, returns transcript list if user auth succeeds.
-  protectedTranscripts <- getTranscripts(corpusName = 'aphasia', corpora = c('aphasia', 'English', 'Aphasia', 'Adler'), auth=TRUE);
-
-  # Get 3-grams of words from protected corpora.
-  protectedNgrams <- getNgrams(nGram=c("3", "word"), corpusName = 'aphasia', corpora = c('aphasia', 'English', 'Aphasia', 'Adler'), auth=TRUE );
+  # # Without auth=TRUE, returns nothing.
+  # protectedTranscripts <- getTranscripts(corpusName = 'aphasia', corpora = c('aphasia', 'English', 'Aphasia', 'Adler'));
+  # # With auth=TRUE, returns transcript list if user auth succeeds.
+  # protectedTranscripts <- getTranscripts(corpusName = 'aphasia', corpora = c('aphasia', 'English', 'Aphasia', 'Adler'), auth=TRUE);
+  #
+  # # Get 3-grams of words from protected corpora.
+  # protectedNgrams <- getNgrams(nGram=c("3", "word"), corpusName = 'aphasia', corpora = c('aphasia', 'English', 'Aphasia', 'Adler'), auth=TRUE );
 }

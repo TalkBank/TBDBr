@@ -40,7 +40,13 @@
 
 
 <meta property="og:title" content="Get legal values — getLegalValues" />
-<meta property="og:description" content="Prints legal values for each level of talkbankDB" />
+<meta property="og:description" content="Prints available options (values) for each level of talkbankDB
+After running getLegalValues(), select the corpus you would like to query.
+The function will return the next level of options
+Choose from those options to progres to the next level of available options
+All names are case-sensitive
+
+" />
 
 
 
@@ -95,7 +101,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Using_the_TalkBank_R_Api.html">Using the TalkBank R Api</a>
+      <a href="../articles/example-queries.html">Example Queries</a>
     </li>
   </ul>
 </li>
@@ -121,12 +127,18 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get legal values</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rbcavanaugh/talkbank/blob/master/R/legal_values_functions.R'><code>R/legal_values_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/rbcavanaugh/talkbank/blob/master/R/helper_functions.R'><code>R/helper_functions.R</code></a></small>
     <div class="hidden name"><code>getLegalValues.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Prints legal values for each level of talkbankDB</p>
+    <p>Prints available options (values) for each level of talkbankDB</p><ul>
+<li><p>After running getLegalValues(), select the corpus you would like to query.</p></li>
+<li><p>The function will return the next level of options</p></li>
+<li><p>Choose from those options to progres to the next level of available options</p></li>
+<li><p>All names are case-sensitive</p></li>
+</ul>
+
     </div>
 
     <pre class="usage"><span class='fu'>getLegalValues</span><span class='op'>(</span><span class='op'>)</span></pre>
@@ -134,8 +146,18 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='fu'>getLegalValues</span><span class='op'>(</span><span class='op'>)</span>
-</pre>
+    <pre class="examples"><div class='input'><span class='fu'>getLegalValues</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "Use this function to get arguments for talkbank functions"
+#&gt; [1] "Enter them just as they appear"
+#&gt; [1] "Corpus Names: aphasia, asd, biling, ca, childes, class, dementia, fluency,  homebank, phon, rhd, samtale, slabank, tbi"
+#&gt; Enter Corpus Name: 
+#&gt; NULL
+#&gt; Enter Level 2: 
+#&gt; NULL
+#&gt; Enter Level 3: 
+#&gt; NULL
+#&gt; Enter Level 4: 
+#&gt; NULL</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -147,7 +169,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by First Last.</p>
+  <p>Developed by John Kowalski, Rob Cavanaugh.</p>
 </div>
 
 <div class="pkgdown">

@@ -40,7 +40,55 @@
 
 
 <meta property="og:title" content="Query CQL — getCQL" />
-<meta property="og:description" content="Queryting by &quot;CQL&quot; (Corpus Query Language) lets us search for patterns in the selected transcripts. We construct a CQL query by specifying a search pattern of words, lemmas, and parts of speech." />
+<meta property="og:description" content="Queryting by &quot;CQL&quot; (Corpus Query Language) lets us search for patterns in the selected transcripts. We construct a CQL query by specifying a search pattern of words, lemmas, and parts of speech.
+The &quot;cqlArr&quot; parameter specifies a pattern to search for in text.  The pattern is built up by appending components that are one of three types:
+Exact word match (type=&quot;word&quot;).
+Match any form of a word (type=&quot;lemma&quot;).
+Or part of speech (type=&quot;pos&quot;).
+
+
+Along with type, components have another value, &quot;freq&quot;, specifying how many times an item should appear at that location.
+Appear once at that location (freq=&quot;once&quot;).
+Appear zero or more times at location (freq=&quot;zeroPlus&quot;).
+Appear one or more times at location (freq=&quot;onePlus&quot;).
+
+
+We append these two-part (type/freq) components together to search for patterns across corpora.
+Some examples:
+To find all instances of exactly &quot;go home&quot;:
+cqlArr=list(
+list(type=&quot;word&quot;, item=&quot;go&quot;, freq=&quot;once&quot;),
+list(type=&quot;word&quot;, item=&quot;home&quot;, freq=&quot;once&quot;))
+
+
+This matches all utterances containing:
+&quot;go home&quot;
+To find all instances of any form of &quot;go&quot; followed by &quot;home&quot;, we use type=&quot;lemma&quot; for &quot;go&quot;:
+cqlArr=list(
+list(type=&quot;lemma&quot;, item=&quot;go&quot;, freq=&quot;once&quot;),
+list(type=&quot;word&quot;, item=&quot;home&quot;, freq=&quot;once&quot;))
+
+
+This matches all utterances containing:
+&quot;go home&quot;
+&quot;goes home&quot;
+&quot;went home&quot;
+&quot;going home&quot;
+To find all instances of a subject pronoun, followd by any form of &quot;go&quot;, followed by one or more adverbs, followed by &quot;home&quot;:
+cqlArr=list(
+list(type=&quot;pos&quot;, item=&quot;pro:sub&quot;, freq=&quot;once&quot;),
+list(type=&quot;lemma&quot;, item=&quot;go&quot;, freq=&quot;once&quot;),
+list(type=&quot;pos&quot;, item=&quot;adv&quot;, freq=&quot;onePlus&quot;),
+list(type=&quot;word&quot;, item=&quot;home&quot;, freq=&quot;once&quot;))
+
+
+This matches all utterances containing:
+&quot;they went back home&quot;
+&quot;they go back home&quot;
+&quot;he went back home&quot;
+&quot;we went back home&quot;
+others...
+There are many &quot;item&quot; values for part of speech (type=&quot;pos&quot;).  See the CHAT manual or the CQL tab on TalkBankDB (https://talkbank.org/DB) for legal part-of-speech codes." />
 
 
 
@@ -95,7 +143,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Using_the_TalkBank_R_Api.html">Using the TalkBank R Api</a>
+      <a href="../articles/example-queries.html">Example Queries</a>
     </li>
   </ul>
 </li>
@@ -127,6 +175,54 @@
 
     <div class="ref-description">
     <p>Queryting by "CQL" (Corpus Query Language) lets us search for patterns in the selected transcripts. We construct a CQL query by specifying a search pattern of words, lemmas, and parts of speech.</p>
+<p>The "cqlArr" parameter specifies a pattern to search for in text.  The pattern is built up by appending components that are one of three types:</p><ul>
+<li><p>Exact word match (type="word").</p></li>
+<li><p>Match any form of a word (type="lemma").</p></li>
+<li><p>Or part of speech (type="pos").</p></li>
+</ul>
+
+<p>Along with type, components have another value, "freq", specifying how many times an item should appear at that location.</p><ul>
+<li><p>Appear once at that location (freq="once").</p></li>
+<li><p>Appear zero or more times at location (freq="zeroPlus").</p></li>
+<li><p>Appear one or more times at location (freq="onePlus").</p></li>
+</ul>
+
+<p>We append these two-part (type/freq) components together to search for patterns across corpora.</p>
+<p>Some examples:</p><ul>
+<li><p>To find all instances of exactly "go home":
+cqlArr=list(
+list(type="word", item="go", freq="once"),
+list(type="word", item="home", freq="once"))</p></li>
+</ul>
+
+<p>This matches all utterances containing:
+"go home"</p><ul>
+<li><p>To find all instances of any form of "go" followed by "home", we use type="lemma" for "go":
+cqlArr=list(
+list(type="lemma", item="go", freq="once"),
+list(type="word", item="home", freq="once"))</p></li>
+</ul>
+
+<p>This matches all utterances containing:
+"go home"
+"goes home"
+"went home"
+"going home"</p><ul>
+<li><p>To find all instances of a subject pronoun, followd by any form of "go", followed by one or more adverbs, followed by "home":
+cqlArr=list(
+list(type="pos", item="pro:sub", freq="once"),
+list(type="lemma", item="go", freq="once"),
+list(type="pos", item="adv", freq="onePlus"),
+list(type="word", item="home", freq="once"))</p></li>
+</ul>
+
+<p>This matches all utterances containing:
+"they went back home"
+"they go back home"
+"he went back home"
+"we went back home"
+others...</p>
+<p>There are many "item" values for part of speech (type="pos").  See the CHAT manual or the CQL tab on TalkBankDB (https://talkbank.org/DB) for legal part-of-speech codes.</p>
     </div>
 
     <pre class="usage"><span class='fu'>getCQL</span><span class='op'>(</span>
@@ -156,53 +252,74 @@ Legal values for freq are "once", "onePlus", and "zeroPlus".</p></td>
     </tr>
     <tr>
       <th>corpusName</th>
-      <td><p>Name of corpus to query.  For example, to search within the childes corpus, corpus="childes".  Note this is a character string value (not a list).  Legal values are 'aphasia', 'asd', 'biling', 'ca', 'childes', 'class', 'dementia', 'fluency', 'homebank', 'phon', 'rhd', 'samtale', 'slabank', and 'tbi'.</p></td>
+      <td><p>Name of corpus to query.  For example, to search within the childes corpus, corpus="childes".</p></td>
     </tr>
     <tr>
       <th>corpora</th>
-      <td><p>Name of corpus/corporas to query.  This is a path starting with the corpus name followed by subfolder names leading to a folder for which all transcripts beneath it will be queried.  For example, to query all transripts in the MacWhinney and Brown corpus: corpora = list(list('childes', 'Eng-NA', 'MacWhinney'), list('childes', 'Eng-NA', 'Brown')).  Legal values can be found by searching the TalkBank browser: https://sla.talkbank.org/TBB.</p></td>
+      <td><p>Name of corpus/corporas to query.  This is a path starting with the corpus name followed by subfolder names leading to a folder for which all transcripts beneath it will be queried.  For example, to query all transcripts in the MacWhinney childes corpus: corpora = c('childes', 'Eng-NA', 'MacWhinney').</p></td>
     </tr>
     <tr>
       <th>lang</th>
-      <td><p>Query by language For example, to get transcripts that contain both English and Spanish: lang=list("eng", "spa"). Legal values: 3-letter language codes based on the ISO 639-3 standard.</p></td>
+      <td><p>Query by language For example, to get transcripts that contain both English and Spanish: lang=c("eng", "spa"). Legal values: 3-letter language codes based on the ISO 639-3 standard.</p></td>
     </tr>
     <tr>
       <th>media</th>
-      <td><p>Query by media type.  For example, to get transcripts with an associated video recording: media=list("video").  Legal values: "audio" or "video".</p></td>
+      <td><p>Query by media type.  For example, to get transcripts with an associated video recording: media=c("video").  Legal values: "audio" or "video".</p></td>
     </tr>
     <tr>
       <th>age</th>
-      <td><p>Query by participant month age range.  For example, to get transcripts with target participants who are either 3-12 or 14-18 months old: age=list(list(from="3", to="12"), list(from="14", to="18")).  Legal values: integer month ages.</p></td>
+      <td><p>Query by participant month age range.  For example, to get transcripts with target participants who are 14-18 months old: age=c(from="3", to="12").</p></td>
     </tr>
     <tr>
       <th>gender</th>
-      <td><p>Query by participant gender. For example, to get transcripts with female target participants: gender=list("female").  Legal values: "female" or "male".</p></td>
+      <td><p>Query by participant gender. For example, to get transcripts with female target participants: gender=c("female").  Legal values: "female" or "male".</p></td>
     </tr>
     <tr>
       <th>designType</th>
-      <td><p>Query by design type.  For example, to get transcripts from a longitudinal study: designType=list("long")  Legal values are "long" for longitudinal studies, "cross" for cross-sectional studies.</p></td>
+      <td><p>Query by design type.  For example, to get transcripts from a longitudinal study: designType=c("long")  Legal values are "long" for longitudinal studies, "cross" for cross-sectional studies.</p></td>
     </tr>
     <tr>
       <th>activityType</th>
-      <td><p>Query by activity type.  For example, to get transcripts where the target particpant is engaged in toy play: activityType=list("toyplay").  See the CHAT manual for legal values.</p></td>
+      <td><p>Query by activity type.  For example, to get transcripts where the target participant is engaged in toy play: activityType=c("toyplay").  See the CHAT manual for legal values.</p></td>
     </tr>
     <tr>
       <th>groupType</th>
-      <td><p>Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.</p></td>
+      <td><p>Query by group type.   For example, to get transcripts where the target participant is hearing limited: groupType=c("HL").  See the CHAT manual for legal values.</p></td>
     </tr>
     <tr>
       <th>auth</th>
-      <td><p>Boolean to determine if user should be prompted to authenticate in order to access protected collections.</p></td>
+      <td><p>Determine if user should be prompted to authenticate in order to access protected collections. Defaults to False.</p></td>
     </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='fu'>getCQL</span><span class='op'>(</span>cqlArr<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>type<span class='op'>=</span><span class='st'>"lemma"</span>, item<span class='op'>=</span><span class='st'>"my"</span>, freq<span class='op'>=</span><span class='st'>"once"</span><span class='op'>)</span>,
+    <pre class="examples"><div class='input'><span class='fu'>getCQL</span><span class='op'>(</span>cqlArr<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>type<span class='op'>=</span><span class='st'>"lemma"</span>, item<span class='op'>=</span><span class='st'>"my"</span>, freq<span class='op'>=</span><span class='st'>"once"</span><span class='op'>)</span>,
                    <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>type<span class='op'>=</span><span class='st'>"lemma"</span>, item<span class='op'>=</span><span class='st'>"ball"</span>, freq<span class='op'>=</span><span class='st'>"once"</span><span class='op'>)</span><span class='op'>)</span>,
        corpusName <span class='op'>=</span> <span class='st'>'childes'</span>,
        corpora <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'childes'</span>, <span class='st'>'Eng-NA'</span>, <span class='st'>'MacWhinney'</span><span class='op'>)</span><span class='op'>)</span>
-</pre>
+</div><div class='output co'>#&gt; [1] "Fetching data, please wait..."
+#&gt; [1] "Success!"</div><div class='output co'>#&gt;           role monthage docid uid who
+#&gt; 1 Target_Child       30 19742  23 CHI
+#&gt; 2 Target_Child       36 19786  85 CHI
+#&gt; 3 Target_Child       40 19811 373 CHI
+#&gt; 4 Target_Child       41 19812   6 CHI
+#&gt; 5 Target_Child       41 19815 249 CHI
+#&gt; 6 Target_Child       44 19829 147 CHI
+#&gt;                                                 utt filename
+#&gt; 1                        I hafta get &lt;&lt; my ball &gt;&gt;    020627
+#&gt; 2                       but I forgot &lt;&lt; my ball &gt;&gt;   030018b
+#&gt; 3 I threw &lt;&lt; my ball &gt;&gt; over that fence next doors    030429
+#&gt; 4        I throw &lt;&lt; my ball &gt;&gt; back to their house    030512
+#&gt; 5                   can he play with &lt;&lt; my ball &gt;&gt;   030526a
+#&gt; 6                     I magiced &lt;&lt; my ball &gt;&gt; away    030805
+#&gt;                                path
+#&gt; 1  childes/Eng-NA/MacWhinney/020627
+#&gt; 2 childes/Eng-NA/MacWhinney/030018b
+#&gt; 3  childes/Eng-NA/MacWhinney/030429
+#&gt; 4  childes/Eng-NA/MacWhinney/030512
+#&gt; 5 childes/Eng-NA/MacWhinney/030526a
+#&gt; 6  childes/Eng-NA/MacWhinney/030805</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -214,7 +331,7 @@ Legal values for freq are "once", "onePlus", and "zeroPlus".</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by First Last.</p>
+  <p>Developed by John Kowalski, Rob Cavanaugh.</p>
 </div>
 
 <div class="pkgdown">

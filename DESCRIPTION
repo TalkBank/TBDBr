@@ -2,11 +2,13 @@ Package: talkbank
 Title: Easy Access To TalkBankDB via R API
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    c(person(given = "John",
+           family = "Kowalski",
+           role = c("aut")),
+    person(given = "Rob",
+           family = "Cavanaugh",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           email = "rob.cavanaugh@pitt.edu"))
 Description: The purpose of TalkBankDB is to provide an intuitive on-line interface for researchers to explore TalkBank's media and transcripts, specify data to be extracted, and pass these data on to statistical programs for further analysis.
 License: GPL (>= 3)
 Encoding: UTF-8
