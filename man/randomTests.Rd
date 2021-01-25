@@ -9,8 +9,3 @@ randomTests()
 \description{
 This function contains a random set of example queries.
 }
-\examples{
-randomTests()
-
-
-}

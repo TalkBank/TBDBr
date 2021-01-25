@@ -6,6 +6,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/rbcavanaugh/talkbank/workflows/R-CMD-check/badge.svg)](https://github.com/rbcavanaugh/talkbank/actions)
+
 <!-- badges: end -->
 
 The goal of the R package ‘talkbank’ is to provide easy access to
@@ -101,7 +102,7 @@ If the query is not valid, it will return which level of the query is
 incorrect
 
 ``` r
-validPath(c('respMsg', 'childes', 'childes', 'somethingThatDoesNotExist'));
+validPath(c('respMsg', 'childes', 'childes', 'somethingThatDoesNotExist'))
 #> [1] "Invalid path at:  somethingThatDoesNotExist"
 #> [1] FALSE
 ```
@@ -115,3 +116,6 @@ aphasia_transcrips <- getTranscripts(corpusName = 'aphasia',
                                      corpora = c('aphasia', 'English', 'Aphasia', 'Adler'),
                                      auth = TRUE);
 ```
+
+More examples are located under
+[*articles*](https://rbcavanaugh.github.io/talkbank/articles/example-queries.html)

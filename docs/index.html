@@ -83,6 +83,7 @@
 <a href="#talkbank" class="anchor"></a>talkbank</h1></div>
 <!-- badges: start -->
 
+<!-- badges: end -->
 <p>The goal of the R package ‘talkbank’ is to provide easy access to TalkBank data through through an R api.</p>
 <p>TalkBank (www.talkbank.org) is a vast collection of audio and video recordings across more than 50 languages linked to richly annotated transcriptions. The goal of TalkBank is to foster fundamental research in the study of human communication with an emphasis on spoken communication. The collection includes repositories in 14 research areas, including language development, adult conversation, multilingualism, and disorders which affect communication. These collections are freely available to support the research of human language and communication. TalkBank has been funded by the National Science Foundation and National Institute of Health since 1999.</p>
 <p>TalkBankDB (database) lets you explore TalkBank’s media and transcripts, specify data to be extracted, and pass these data on to statistical programs for further analysis. This package ‘talkbank’ provides easy access to all information within TalkBankDB, including clinical collections. Clinical Banks are password protected. Visit www.talkbank.org to learn about gaining access to these collections.</p>
@@ -135,7 +136,7 @@
 <span class="co">#&gt; [1] TRUE</span></code></pre></div>
 <p>If the query is not valid, it will return which level of the query is incorrect</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/validPath.html">validPath</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'respMsg'</span>, <span class="st">'childes'</span>, <span class="st">'childes'</span>, <span class="st">'somethingThatDoesNotExist'</span><span class="op">)</span><span class="op">)</span>;
+<code class="sourceCode R"><span class="fu"><a href="reference/validPath.html">validPath</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'respMsg'</span>, <span class="st">'childes'</span>, <span class="st">'childes'</span>, <span class="st">'somethingThatDoesNotExist'</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "Invalid path at:  somethingThatDoesNotExist"</span>
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
 <p>To access clinical collections, use the argument <em>auth = TRUE</em>. A pop-up will ask you to select the clinical bank you are trying to access and to enter the correct username and password for that database</p>
@@ -143,6 +144,7 @@
 <code class="sourceCode R"><span class="va">aphasia_transcrips</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getTranscripts.html">getTranscripts</a></span><span class="op">(</span>corpusName <span class="op">=</span> <span class="st">'aphasia'</span>,
                                      corpora <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'aphasia'</span>, <span class="st">'English'</span>, <span class="st">'Aphasia'</span>, <span class="st">'Adler'</span><span class="op">)</span>,
                                      auth <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>;</code></pre></div>
+<p>More examples are located under <a href="https://rbcavanaugh.github.io/talkbank/articles/example-queries.html"><em>articles</em></a></p>
 </div>
 </div>
   </div>

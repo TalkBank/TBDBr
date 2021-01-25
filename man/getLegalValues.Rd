@@ -15,6 +15,3 @@ Prints available options (values) for each level of talkbankDB
 \item All names are case-sensitive
 }
 }
-\examples{
-getLegalValues()
-}
