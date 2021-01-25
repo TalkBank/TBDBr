@@ -9,7 +9,7 @@
 <!-- badges: end -->
 
 The goal of the R package ‘talkbank’ is to provide easy access to
-talkbank data through through an R api.
+TalkBank data through through an R api.
 
 TalkBank (www.talkbank.org) is a vast collection of audio and video
 recordings across more than 50 languages linked to richly annotated
@@ -17,14 +17,14 @@ transcriptions. The goal of TalkBank is to foster fundamental research
 in the study of human communication with an emphasis on spoken
 communication. The collection includes repositories in 14 research
 areas, including language development, adult conversation,
-multilingualism, and disorders of communication. These resources are
-freely available to support research of human language and
-communication. Talkbank has been funded by the National Science
-Foundation and National Institute of Health since 1999.
+multilingualism, and disorders which affect communication. These
+collections are freely available to support the research of human
+language and communication. TalkBank has been funded by the National
+Science Foundation and National Institute of Health since 1999.
 
 TalkBankDB (database) lets you explore TalkBank’s media and transcripts,
 specify data to be extracted, and pass these data on to statistical
-programs for further analysis. The R package ‘talkbank’ provides easy
+programs for further analysis. This package ‘talkbank’ provides easy
 access to all information within TalkBankDB, including clinical
 collections. Clinical Banks are password protected. Visit
 www.talkbank.org to learn about gaining access to these collections.
@@ -80,17 +80,17 @@ getNgrams()
 getCQL()
 ```
 
-Because the options for each talkbank collection and function vary, 2
-functions are available to determine the possible options.
-
+Because the options for each talkbank collection and function vary, the
+getLegalValues() function can help determine the possible options.
 getLegalValues() will interactively return options available at each
-level of the database. 2) validPath() will
+level of the database.
 
 ``` r
 getLegalValues()
 ```
 
-validPath() will return whether a given query is valid
+For troubleshooting, an additional function, validPath(), will return
+whether a given query is valid.
 
 ``` r
 validPath(c('respMsg', 'childes', 'childes', 'Clinical'));
@@ -106,9 +106,9 @@ validPath(c('respMsg', 'childes', 'childes', 'somethingThatDoesNotExist'));
 #> [1] FALSE
 ```
 
-To access clinical collections, use the argument *auth = TRUE* in any
-function. A brief pop-up will ask you to select the clinical bank you
-are trying to access and to enter the correct username and password.
+To access clinical collections, use the argument *auth = TRUE*. A pop-up
+will ask you to select the clinical bank you are trying to access and to
+enter the correct username and password for that database
 
 ``` r
 aphasia_transcrips <- getTranscripts(corpusName = 'aphasia',

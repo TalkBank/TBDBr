@@ -25,28 +25,84 @@ Legal values for type are: "word" to match exact word, "lemma" to match all form
 Legal values for item are any word, word lemma, or part of speech code (see CHAT manual or the CQL tab on TalkBankDB (https://talkbank.org/DB) for legal part-of-speech codes).
 Legal values for freq are "once", "onePlus", and "zeroPlus".}
 
-\item{corpusName}{Name of corpus to query.  For example, to search within the childes corpus, corpus="childes".  Note this is a character string value (not a list).  Legal values are 'aphasia', 'asd', 'biling', 'ca', 'childes', 'class', 'dementia', 'fluency', 'homebank', 'phon', 'rhd', 'samtale', 'slabank', and 'tbi'.}
+\item{corpusName}{Name of corpus to query.  For example, to search within the childes corpus, corpus="childes".}
 
-\item{corpora}{Name of corpus/corporas to query.  This is a path starting with the corpus name followed by subfolder names leading to a folder for which all transcripts beneath it will be queried.  For example, to query all transripts in the MacWhinney and Brown corpus: corpora = list(list('childes', 'Eng-NA', 'MacWhinney'), list('childes', 'Eng-NA', 'Brown')).  Legal values can be found by searching the TalkBank browser: https://sla.talkbank.org/TBB.}
+\item{corpora}{Name of corpus/corporas to query.  This is a path starting with the corpus name followed by subfolder names leading to a folder for which all transcripts beneath it will be queried.  For example, to query all transcripts in the MacWhinney childes corpus: corpora = c('childes', 'Eng-NA', 'MacWhinney').}
 
-\item{lang}{Query by language For example, to get transcripts that contain both English and Spanish: lang=list("eng", "spa"). Legal values: 3-letter language codes based on the ISO 639-3 standard.}
+\item{lang}{Query by language For example, to get transcripts that contain both English and Spanish: lang=c("eng", "spa"). Legal values: 3-letter language codes based on the ISO 639-3 standard.}
 
-\item{media}{Query by media type.  For example, to get transcripts with an associated video recording: media=list("video").  Legal values: "audio" or "video".}
+\item{media}{Query by media type.  For example, to get transcripts with an associated video recording: media=c("video").  Legal values: "audio" or "video".}
 
-\item{age}{Query by participant month age range.  For example, to get transcripts with target participants who are either 3-12 or 14-18 months old: age=list(list(from="3", to="12"), list(from="14", to="18")).  Legal values: integer month ages.}
+\item{age}{Query by participant month age range.  For example, to get transcripts with target participants who are 14-18 months old: age=c(from="3", to="12").}
 
-\item{gender}{Query by participant gender. For example, to get transcripts with female target participants: gender=list("female").  Legal values: "female" or "male".}
+\item{gender}{Query by participant gender. For example, to get transcripts with female target participants: gender=c("female").  Legal values: "female" or "male".}
 
-\item{designType}{Query by design type.  For example, to get transcripts from a longitudinal study: designType=list("long")  Legal values are "long" for longitudinal studies, "cross" for cross-sectional studies.}
+\item{designType}{Query by design type.  For example, to get transcripts from a longitudinal study: designType=c("long")  Legal values are "long" for longitudinal studies, "cross" for cross-sectional studies.}
 
-\item{activityType}{Query by activity type.  For example, to get transcripts where the target particpant is engaged in toy play: activityType=list("toyplay").  See the CHAT manual for legal values.}
+\item{activityType}{Query by activity type.  For example, to get transcripts where the target participant is engaged in toy play: activityType=c("toyplay").  See the CHAT manual for legal values.}
 
-\item{groupType}{Query by group type.   For example, to get transcripts where the target particpant is hearing limited: groupType=list("HL").  See the CHAT manual for legal values.}
+\item{groupType}{Query by group type.   For example, to get transcripts where the target participant is hearing limited: groupType=c("HL").  See the CHAT manual for legal values.}
 
-\item{auth}{Boolean to determine if user should be prompted to authenticate in order to access protected collections.}
+\item{auth}{Determine if user should be prompted to authenticate in order to access protected collections. Defaults to False.}
 }
 \description{
 Queryting by "CQL" (Corpus Query Language) lets us search for patterns in the selected transcripts. We construct a CQL query by specifying a search pattern of words, lemmas, and parts of speech.
+
+The "cqlArr" parameter specifies a pattern to search for in text.  The pattern is built up by appending components that are one of three types:
+\itemize{
+\item Exact word match (type="word").
+\item Match any form of a word (type="lemma").
+\item Or part of speech (type="pos").
+}
+
+Along with type, components have another value, "freq", specifying how many times an item should appear at that location.
+\itemize{
+\item Appear once at that location (freq="once").
+\item Appear zero or more times at location (freq="zeroPlus").
+\item Appear one or more times at location (freq="onePlus").
+}
+
+We append these two-part (type/freq) components together to search for patterns across corpora.
+
+Some examples:
+\itemize{
+\item To find all instances of exactly "go home":
+cqlArr=list(
+list(type="word", item="go", freq="once"),
+list(type="word", item="home", freq="once"))
+}
+
+This matches all utterances containing:
+"go home"
+\itemize{
+\item To find all instances of any form of "go" followed by "home", we use type="lemma" for "go":
+cqlArr=list(
+list(type="lemma", item="go", freq="once"),
+list(type="word", item="home", freq="once"))
+}
+
+This matches all utterances containing:
+"go home"
+"goes home"
+"went home"
+"going home"
+\itemize{
+\item To find all instances of a subject pronoun, followd by any form of "go", followed by one or more adverbs, followed by "home":
+cqlArr=list(
+list(type="pos", item="pro:sub", freq="once"),
+list(type="lemma", item="go", freq="once"),
+list(type="pos", item="adv", freq="onePlus"),
+list(type="word", item="home", freq="once"))
+}
+
+This matches all utterances containing:
+"they went back home"
+"they go back home"
+"he went back home"
+"we went back home"
+others...
+
+There are many "item" values for part of speech (type="pos").  See the CHAT manual or the CQL tab on TalkBankDB (https://talkbank.org/DB) for legal part-of-speech codes.
 }
 \examples{
 getCQL(cqlArr=list(list(type="lemma", item="my", freq="once"),

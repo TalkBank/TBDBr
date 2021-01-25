@@ -1,9 +1,7 @@
 ---
 title: "Using the TalkBank R Api"
 output: 
-  prettydoc::html_pretty:
-    theme: default
-    highlight: github
+
 vignette: >
   %\VignetteIndexEntry{Using the TalkBank R Api}
   %\VignetteEngine{knitr::rmarkdown}

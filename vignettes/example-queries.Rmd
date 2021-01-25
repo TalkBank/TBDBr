@@ -1,0 +1,182 @@
+---
+title: "Example Queries"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Example Queries}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(kableExtra)
+```
+
+## A glimpse at each talkbank query function
+
+```{r setup}
+library(talkbank)
+```
+
+### getTranscripts
+
+Queries a table where each row represents a transcript.
+
+* Link to view transcript and play any associated media.
+* Corpus path to transcript.
+* Media types (audio/video) linked to transcript.
+* Unique ID for transcript (PID).
+* Languages spoken. Date recorded.
+* Design Type.
+* Activity Type.
+* Group Type.
+
+```{r transcripts}
+# Get penglish-north american transcripts in in childes 
+ transcripts <- getTranscripts(corpusName = 'childes',
+                                     corpora = c('childes', 'Eng-NA'))
+```
+
+```{r transcript output, echo = F}
+kable(transcripts[1:5,]) %>% 
+   kable_styling("striped") %>%
+   scroll_box(width = "100%")
+```
+
+### getParticipants
+
+Queries a table where each row represents a participant (speaker) listed in a transcript. 
+
+* Link to view transcript and play any associated media.
+* Corpus path to transcript.
+* Speaker's ID.
+* Speaker's name.
+* Speaker's role.
+* Speaker's language.
+* Speaker's age in months.
+* Speaker's age in Years/Months/Days.
+* Speaker's gender.
+* Number of words spoken by speaker.
+* Number of utterances spoken by speaker.
+* Average number of words per speaker's utterance.
+* Median number of words per speaker's utterance.
+
+```{r participants}
+# Get english-north american participants in childes 
+ participants <- getParticipants(corpusName = 'childes',
+                                     corpora = c('childes', 'Eng-NA'))
+```
+
+```{r participant output, echo = F}
+kable(participants[1:5,]) %>% 
+   kable_styling("striped") %>%
+   scroll_box(width = "100%")
+```
+
+### getTokens
+
+Queries a table with all the words from the selected transcripts, one word (token) per row.
+
+* Link to view transcript and play any associated media.
+* Corpus path to transcript.
+* Utterance sequence number (starts at 0).
+* Word sequence number within utterance (starts at 0).
+* Speaker's role.
+* Speaker's ID.
+* The word (token).
+* The word's stem.
+* Part of speech code. (See CHAT manual for descriptions of codes).
+
+```{r tokens}
+# Get tokens (words) from one transcript.
+tokens <- getTokens(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
+```
+
+```{r token output, echo = F}
+kable(tokens[1:5,]) %>% 
+   kable_styling("striped") %>%
+   scroll_box(width = "100%")
+```
+
+### getTokenTypes
+
+Queries a table with all the words from the selected transcripts condensed into "types" based on word form and part of speech.
+
+* Speaker's role.
+* The word. Number of occurances of word in selected transcripts.
+* Part of speech (See CHAT manual for descriptions of codes).
+* The word's stem.
+
+```{r tokentypes}
+# Get token types from MacWhinney set.
+token.types <- getTokenTypes(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney'));
+```
+
+```{r tokentype output, echo = F}
+kable(token.types[1:5,]) %>% 
+   kable_styling("striped") %>%
+   scroll_box(width = "100%")
+```
+
+### getUtterances
+
+Queries a table with all the words from the selected transcripts, one word (token) per row.
+
+* Link to view transcript and play any associated media.
+* Corpus path to transcript.
+* Utterance sequence number (starts at 0).
+* Word sequence number within utterance (starts at 0).
+* Speaker's ID.
+* Speaker's role.
+* Utterance postcodes.
+* Utterance GEMS.
+* Utterance.
+* Start time of utterance in associated media.
+* End time of utterance in associated media.
+
+```{r utterances}
+utterances <- getUtterances(corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'))
+```
+
+```{r utterance output, echo = F}
+kable(utterances[1:5,]) %>% 
+   kable_styling("striped") %>%
+   scroll_box(width = "100%")
+```
+
+### getNgrams
+
+Queries to get n-grams of specified size (n) and type.
+
+* Speaker's role.
+* The n-gram (word, stem, or part-of-speech). See CHAT manual for part-of-speech code values.
+* Frequency count of n-gram.
+
+```{r ngrams}
+# Get 3-grams of words from one transcript.
+ngrams <- getNgrams(nGram=c("3", "word"), corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
+```
+
+```{r ngram output, echo = F}
+kable(ngrams[1:5,]) %>% 
+   kable_styling("striped") %>%
+   scroll_box(width = "100%")
+```
+
+### getCQL
+
+Queryting by "CQL" (Corpus Query Language) lets us search for patterns in the selected transcripts. We construct a CQL query by specifying a search pattern of words, lemmas, and parts of speech. see documentation (?getCQL) for details. 
+
+```{r cql}
+# Query for text pattern "my ball" as lemma in MacWhinney set.
+cql.myball <- getCQL(cqlArr=list(list(type="lemma", item="my", freq="once"), list(type="lemma", item="ball", freq="once")), corpusName = 'childes', corpora = c('childes', 'Eng-NA', 'MacWhinney'));
+```
+
+```{r cql output, echo = F}
+kable(cql.myball[1:5,]) %>% 
+   kable_styling("striped") %>%
+   scroll_box(width = "100%")
+```

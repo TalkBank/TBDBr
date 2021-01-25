@@ -275,12 +275,11 @@ verifyArg <- function (corpusName, corpora, lang, media, age, gender, designType
   return(TRUE);
 }
 
-# Get path tree to every doc in TalkBank.
-# This can be useful for:
-# - Verifying "corpora" param passed to query functions by walking down and verifying path in object returned here.  Can give user feedback on what part of path is incorrect.
-# - GUIs to select paths.
-# - Auto-complete paths.
-# - Other things...
+
+
+
+#' @title Get Path Trees
+#' @description Get path tree to every doc in TalkBank.This can be useful for evrifying "corpora" param passed to query functions by walking down and verifying path in object returned here.  Can give user feedback on what part of path is incorrect. Future use for GUIs to select paths or auto-complete
 getPathTrees <- function () {
   query <- list(queryVals = list());
 
@@ -288,6 +287,65 @@ getPathTrees <- function () {
 
   return( respData );
 }
+
+
+#' @title Check for valid path
+#' @description This helper function can be used by other functions to validate user 'corpora' parameter values passed to the query functions.
+#' @param targetPath Vector of strings representing path to validate in pathTree.
+#' @param pathTree The tree of folder and file paths (value from getPathTrees()).
+#' @export
+#' @examples
+#' validPath(c('respMsg', 'childes', 'childes', 'Clinical'));
+#'
+#' validPath(c('respMsg', 'childes', 'childes', 'somethingThatDoesNotExist'));
+validPath <- function(targetPath, pathTree=getPathTrees()) {
+  # Successfully walked down targetPath in pathTree.
+  if(length(targetPath) == 0) {
+    return(TRUE);
+  }
+
+  # If targetPath so far is valid, continue down path.
+  if(exists(targetPath[1], where=pathTree)) {
+    validPath(targetPath[-1], pathTree[[targetPath[1]]]);
+  }
+  else {
+    print(paste('Invalid path at: ', targetPath[1]));
+    return(FALSE);
+  }
+}
+
+#' @title Get legal values
+#' @description Prints available options (values) for each level of talkbankDB
+#' * After running getLegalValues(), select the corpus you would like to query.
+#' * The function will return the next level of options
+#' * Choose from those options to progres to the next level of available options
+#' * All names are case-sensitive
+#' @export
+#' @examples
+#' getLegalValues()
+getLegalValues <- function(){
+  trees = getPathTrees()
+  print('Use this function to get arguments for talkbank functions')
+  print('Enter them just as they appear')
+  print('Corpus Names: aphasia, asd, biling, ca, childes, class, dementia, fluency,  homebank, phon, rhd, samtale, slabank, tbi')
+
+  var1 = readline("Enter Corpus Name: ")
+  languages = names(trees[['respMsg']][[var1]][[var1]])
+  print(languages)
+
+  var2 = readline("Enter Level 2: ")
+  group = names(trees[['respMsg']][[var1]][[var1]][[var2]])
+  print(group)
+
+  var3 = readline("Enter Level 3: ")
+  corpus = names(trees[['respMsg']][[var1]][[var1]][[var2]][[var3]])
+  print(corpus)
+
+  var4 = readline("Enter Level 4: ")
+  sites = names(trees[['respMsg']][[var1]][[var1]][[var2]][[var3]][[var4]])
+  print(sites)
+}
+
 
 
 
