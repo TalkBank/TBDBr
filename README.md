@@ -9,7 +9,7 @@
 
 <!-- badges: end -->
 
-The goal of the R package ‘talkbank’ is to provide easy access to
+The goal of the R package ‘talkbankDB’ is to provide easy access to
 TalkBank data through through an R api.
 
 TalkBank (www.talkbank.org) is a vast collection of audio and video
@@ -117,4 +117,5 @@ aphasia_transcrips <- getTranscripts(corpusName = 'aphasia',
                                      auth = TRUE);
 ```
 
-More examples are located [*here*](https://rbcavanaugh.github.io/talkbank/articles/example-queries.html)
+More examples are located under
+[*articles*](https://rbcavanaugh.github.io/talkbank/articles/example-queries.html)
