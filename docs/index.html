@@ -105,19 +105,19 @@
                                     corpora <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'childes'</span>, <span class="st">'Eng-NA'</span>, <span class="st">'MacWhinney'</span>, <span class="st">'010411a'</span><span class="op">)</span><span class="op">)</span>;
 <span class="co">#&gt; [1] "Fetching data, please wait..."</span>
 <span class="co">#&gt; [1] "Success!"</span>
-<span class="va">example_utterances</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="op">]</span>
-<span class="co">#&gt;   filename                              path uid who   role postcodes gems</span>
-<span class="co">#&gt; 1  010411a childes/Eng-NA/MacWhinney/010411a   0 FAT Father      NULL NULL</span>
-<span class="co">#&gt; 2  010411a childes/Eng-NA/MacWhinney/010411a   1 FAT Father      NULL NULL</span>
-<span class="co">#&gt; 3  010411a childes/Eng-NA/MacWhinney/010411a   2 FAT Father      NULL NULL</span>
-<span class="co">#&gt; 4  010411a childes/Eng-NA/MacWhinney/010411a   3 FAT Father      NULL NULL</span>
-<span class="co">#&gt; 5  010411a childes/Eng-NA/MacWhinney/010411a   4 FAT Father      NULL NULL</span>
-<span class="co">#&gt;                 utterance startTime endTime</span>
-<span class="co">#&gt; 1   wanna give me a kiss       20.6  22.419</span>
-<span class="co">#&gt; 2 come on give me a kiss     22.419  23.367</span>
-<span class="co">#&gt; 3 come on give me a kiss     23.367  24.481</span>
-<span class="co">#&gt; 4 give your daddy a kiss     24.481  25.596</span>
-<span class="co">#&gt; 5            mm nice fiu     25.596  29.933</span></code></pre></div>
+<span class="va">example_utterances</span><span class="op">[</span><span class="fl">10</span><span class="op">:</span><span class="fl">14</span>,<span class="op">]</span>
+<span class="co">#&gt;    filename                              path uid who         role postcodes</span>
+<span class="co">#&gt; 10  010411a childes/Eng-NA/MacWhinney/010411a   9 CHI Target_Child      NULL</span>
+<span class="co">#&gt; 11  010411a childes/Eng-NA/MacWhinney/010411a  10 FAT       Father      NULL</span>
+<span class="co">#&gt; 12  010411a childes/Eng-NA/MacWhinney/010411a  11 CHI Target_Child      NULL</span>
+<span class="co">#&gt; 13  010411a childes/Eng-NA/MacWhinney/010411a  12 FAT       Father      NULL</span>
+<span class="co">#&gt; 14  010411a childes/Eng-NA/MacWhinney/010411a  13 CHI Target_Child      NULL</span>
+<span class="co">#&gt;    gems                                         utterance startTime endTime</span>
+<span class="co">#&gt; 10 NULL                                      what's that     33.398  33.714</span>
+<span class="co">#&gt; 11 NULL                          taperecorder over there     33.714  34.884</span>
+<span class="co">#&gt; 12 NULL                                               hm     34.884  35.999</span>
+<span class="co">#&gt; 13 NULL do you have some nice little things to say to it     35.999  37.818</span>
+<span class="co">#&gt; 14 NULL                                               hi     37.818  38.394</span></code></pre></div>
 <p>The available functions for accessing different datatypes are below. The arguments for each function are documented, which can be accessed by typing ?functionName (e.g. ?getTranscriots()).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/getTranscripts.html">getTranscripts</a></span><span class="op">(</span><span class="op">)</span>

@@ -154,7 +154,7 @@ utterances <- getUtterances(corpusName = 'childes',
 ```
 
 ```{r utterance output, echo = F}
-kable(utterances[1:5,]) %>% 
+kable(utterances[10:14,]) %>% 
    kable_styling("striped") %>%
    scroll_box(width = "100%")
 ```

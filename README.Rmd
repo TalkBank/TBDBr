@@ -44,7 +44,7 @@ talkbank allows you to access data from talkbank.org through several functions. 
 ```{r example}
 example_utterances <- getUtterances(corpusName = 'childes',
                                     corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
-example_utterances[1:5,]
+example_utterances[10:14,]
 ```
 
 The available functions for accessing different datatypes are below. The arguments for each function are documented, which can be accessed by typing ?functionName (e.g. ?getTranscriots()).

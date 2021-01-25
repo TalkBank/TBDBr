@@ -52,19 +52,19 @@ example_utterances <- getUtterances(corpusName = 'childes',
                                     corpora = c('childes', 'Eng-NA', 'MacWhinney', '010411a'));
 #> [1] "Fetching data, please wait..."
 #> [1] "Success!"
-example_utterances[1:5,]
-#>   filename                              path uid who   role postcodes gems
-#> 1  010411a childes/Eng-NA/MacWhinney/010411a   0 FAT Father      NULL NULL
-#> 2  010411a childes/Eng-NA/MacWhinney/010411a   1 FAT Father      NULL NULL
-#> 3  010411a childes/Eng-NA/MacWhinney/010411a   2 FAT Father      NULL NULL
-#> 4  010411a childes/Eng-NA/MacWhinney/010411a   3 FAT Father      NULL NULL
-#> 5  010411a childes/Eng-NA/MacWhinney/010411a   4 FAT Father      NULL NULL
-#>                 utterance startTime endTime
-#> 1   wanna give me a kiss       20.6  22.419
-#> 2 come on give me a kiss     22.419  23.367
-#> 3 come on give me a kiss     23.367  24.481
-#> 4 give your daddy a kiss     24.481  25.596
-#> 5            mm nice fiu     25.596  29.933
+example_utterances[10:14,]
+#>    filename                              path uid who         role postcodes
+#> 10  010411a childes/Eng-NA/MacWhinney/010411a   9 CHI Target_Child      NULL
+#> 11  010411a childes/Eng-NA/MacWhinney/010411a  10 FAT       Father      NULL
+#> 12  010411a childes/Eng-NA/MacWhinney/010411a  11 CHI Target_Child      NULL
+#> 13  010411a childes/Eng-NA/MacWhinney/010411a  12 FAT       Father      NULL
+#> 14  010411a childes/Eng-NA/MacWhinney/010411a  13 CHI Target_Child      NULL
+#>    gems                                         utterance startTime endTime
+#> 10 NULL                                      what's that     33.398  33.714
+#> 11 NULL                          taperecorder over there     33.714  34.884
+#> 12 NULL                                               hm     34.884  35.999
+#> 13 NULL do you have some nice little things to say to it     35.999  37.818
+#> 14 NULL                                               hi     37.818  38.394
 ```
 
 The available functions for accessing different datatypes are below. The
