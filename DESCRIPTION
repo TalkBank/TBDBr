@@ -1,6 +1,7 @@
 Package: TBDBr
 Title: Easy Access To TalkBankDB via R API
 Version: 0.0.0.9000
+Date: 2021
 Authors@R: 
     c(person(given = "John",
            family = "Kowalski",
@@ -9,7 +10,8 @@ Authors@R:
     person(given = "Rob",
            family = "Cavanaugh",
            role = c("aut", "cre"),
-           email = "rob.cavanaugh@pitt.edu"))
+           email = "rob.cavanaugh@pitt.edu",
+           comment = c(ORCID = 0000-0002-2114-6565)))
 Description: The purpose of TalkBankDB is to provide an intuitive on-line interface for researchers to explore TalkBank's media and transcripts, specify data to be extracted, and pass these data on to statistical programs for further analysis.
 License: GPL (>= 3)
 Encoding: UTF-8

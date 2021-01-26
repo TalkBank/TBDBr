@@ -117,4 +117,5 @@ aphasia_transcrips <- getTranscripts(corpusName = 'aphasia',
                                      auth = TRUE);
 ```
 
-More examples are located [*here*](https://rbcavanaugh.github.io/talkbank/articles/example-queries.html)
+More examples are located under
+[*articles*](https://rbcavanaugh.github.io/talkbank/articles/example-queries.html)
