@@ -9,8 +9,8 @@
 
 <!-- badges: end -->
 
-The goal of the TBDBr R package is to provide easy access to TalkBankDB
-through an R api.
+The goal of the TBDBr package is to provide easy access to TalkBankDB
+through an R API.
 
 TalkBank (www.talkbank.org) is a vast collection of audio and video
 recordings across more than 50 languages linked to richly annotated
@@ -23,12 +23,13 @@ collections are freely available to support the research of human
 language and communication. TalkBank has been funded by the National
 Science Foundation and National Institute of Health since 1999.
 
-TalkBankDB (database) lets you explore TalkBank’s media and transcripts,
-specify data to be extracted, and pass these data on to statistical
-programs for further analysis. The TBDBr package (talkbank database - r)
-provides easy access to all information within TalkBankDB, including
-clinical collections. Clinical Banks are password protected. Visit
-www.talkbank.org to learn about gaining access to these collections.
+TalkBankDB (www.talkbank.org/DB) is a database and set of tools for exploring 
+TalkBank’s media and transcripts, specify data to be extracted, and pass 
+these data on to statistical programs for further analysis. 
+The TBDBr package (TalkBankDataBase - r) provides easy access to all 
+information within TalkBankDB, including clinical collections. 
+Clinical Banks are password protected. Visit www.talkbank.org to 
+learn about gaining access to these collections.
 
 ## Installation
 
@@ -43,9 +44,9 @@ library(TBDBr)
 
 ## Functionality
 
-TBDBr allows you to access data from talkbank.org through several
-functions. For example, you can access the utterances for a participant
-in the child language component of talkbank.org:
+TBDBr allows access to data from TalkBankDB through several
+functions. For example, to get a table of utterances from a 
+particular transcript in the childes/Eng-NA/MacWhinney collection:
 
 ``` r
 example_utterances <- getUtterances(corpusName = 'childes',
