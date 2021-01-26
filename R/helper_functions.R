@@ -14,7 +14,7 @@ library(kableExtra)
 library(shiny) # for password no echo
 
 # Takes:
-# query: A POST query formatted as list of lists.
+# query: A POST query formatted as list of lists
 # route: The name of the route on server.
 # Returns a dataframe with server response.
 getData <- function(query, route) {
@@ -279,7 +279,7 @@ verifyArg <- function (corpusName, corpora, lang, media, age, gender, designType
 
 
 #' @title Get Path Trees
-#' @description Get path tree to every doc in TalkBank.This can be useful for evrifying "corpora" param passed to query functions by walking down and verifying path in object returned here.  Can give user feedback on what part of path is incorrect. Future use for GUIs to select paths or auto-complete
+#' @description Get path tree to every doc in TalkBankDB This can be useful for verifying "corpora" param passed to query functions by walking down and verifying path in object returned here.  Can give user feedback on what part of path is incorrect. Future use for GUIs to select paths or auto-complete
 getPathTrees <- function () {
   query <- list(queryVals = list());
 

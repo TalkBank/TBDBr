@@ -18,7 +18,7 @@ library(kableExtra)
 ## A glimpse at each talkbank query function
 
 ```{r setup}
-library(talkbank)
+library(TBDBr)
 ```
 
 ### getTranscripts

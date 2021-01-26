@@ -1,4 +1,4 @@
-Package: talkbank
+Package: TBDBr
 Title: Easy Access To TalkBankDB via R API
 Version: 0.0.0.9000
 Authors@R: 
