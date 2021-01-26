@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 library(kableExtra)
 ```
 
-## A glimpse at each talkbank query function
+## A glimpse at each TBDBr query function
 
 ```{r setup}
 library(TBDBr)

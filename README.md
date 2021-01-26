@@ -1,16 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# talkbank
+# TBDBr
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/rbcavanaugh/talkbank/workflows/R-CMD-check/badge.svg)](https://github.com/rbcavanaugh/talkbank/actions)
+[![R-CMD-check](https://github.com/TalkBank/TBDBr/workflows/R-CMD-check/badge.svg)](https://github.com/TalkBank/TBDBr/actions)
 
 <!-- badges: end -->
 
-The goal of the R package ‘talkbankDB’ is to provide easy access to
-TalkBank data through through an R api.
+The goal of the TBDBr R package is to provide easy access to TalkBankDB
+through an R api.
 
 TalkBank (www.talkbank.org) is a vast collection of audio and video
 recordings across more than 50 languages linked to richly annotated
@@ -25,10 +25,10 @@ Science Foundation and National Institute of Health since 1999.
 
 TalkBankDB (database) lets you explore TalkBank’s media and transcripts,
 specify data to be extracted, and pass these data on to statistical
-programs for further analysis. This package ‘talkbank’ provides easy
-access to all information within TalkBankDB, including clinical
-collections. Clinical Banks are password protected. Visit
-www.talkbank.org to learn about gaining access to these collections.
+programs for further analysis. This package, TBDBr, provides easy access
+to all information within TalkBankDB, including clinical collections.
+Clinical Banks are password protected. Visit www.talkbank.org to learn
+about gaining access to these collections.
 
 ## Installation
 
@@ -37,8 +37,8 @@ You can install the released version of talkbank from
 
 ``` r
 # install.packages("devtools")
-# devtools::install_github("rbcavanaugh/talkbank")
-library(talkbank)
+# devtools::install_github("rbcavanaugh/TBDBr")
+library(TBDBr)
 ```
 
 ## Functionality

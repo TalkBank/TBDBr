@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "John",
            family = "Kowalski",
-           role = c("aut", "cre"),
+           role = c("aut"),
            email = "jkau@andrew.cmu.edu"),
     person(given = "Rob",
            family = "Cavanaugh",
