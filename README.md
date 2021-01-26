@@ -37,7 +37,7 @@ You can install the released version of talkbank from
 
 ``` r
 # install.packages("devtools")
-#devtools::install_github("Talkbank/TBDBr")
+#devtools::install_github("TalkBank/TBDBr")
 library(TBDBr)
 ```
 
