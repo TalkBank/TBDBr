@@ -25,7 +25,7 @@ The goal of the TBDBr R package is to provide easy access to TalkBankDB through 
 
 TalkBank (www.talkbank.org) is a vast collection of audio and video recordings across more than 50 languages linked to richly annotated transcriptions. The goal of TalkBank is to foster fundamental research in the study of human communication with an emphasis on spoken communication. The collection includes repositories in 14 research areas, including language development, adult conversation, multilingualism, and disorders which affect communication. These collections are freely available to support the research of human language and communication. TalkBank has been funded by the National Science Foundation and National Institute of Health since 1999.
 
-TalkBankDB (database) lets you explore TalkBank's media and transcripts, specify data to be extracted, and pass these data on to statistical programs for further analysis. This package, TBDBr, provides easy access to all information within TalkBankDB, including clinical collections. Clinical Banks are password protected. Visit www.talkbank.org to learn about gaining access to these collections.
+TalkBankDB (database) lets you explore TalkBank's media and transcripts, specify data to be extracted, and pass these data on to statistical programs for further analysis. The TBDBr package (talkbank database - r) provides easy access to all information within TalkBankDB, including clinical collections. Clinical Banks are password protected. Visit www.talkbank.org to learn about gaining access to these collections.
 
 ## Installation
 
@@ -33,13 +33,13 @@ You can install the released version of talkbank from [GitHub](https://github.co
 
 ```{r install}
 # install.packages("devtools")
-# devtools::install_github("rbcavanaugh/TBDBr")
+#devtools::install_github("Talkbank/TBDBr")
 library(TBDBr)
 ```
 
 ## Functionality
 
-talkbank allows you to access data from talkbank.org through several functions. For example, you can access the utterances for a participant in the child language component of talkbank.org:
+TBDBr allows you to access data from talkbank.org through several functions. For example, you can access the utterances for a participant in the child language component of talkbank.org:
 
 ```{r example}
 example_utterances <- getUtterances(corpusName = 'childes',

@@ -25,10 +25,10 @@ Science Foundation and National Institute of Health since 1999.
 
 TalkBankDB (database) lets you explore TalkBank’s media and transcripts,
 specify data to be extracted, and pass these data on to statistical
-programs for further analysis. This package, TBDBr, provides easy access
-to all information within TalkBankDB, including clinical collections.
-Clinical Banks are password protected. Visit www.talkbank.org to learn
-about gaining access to these collections.
+programs for further analysis. The TBDBr package (talkbank database - r)
+provides easy access to all information within TalkBankDB, including
+clinical collections. Clinical Banks are password protected. Visit
+www.talkbank.org to learn about gaining access to these collections.
 
 ## Installation
 
@@ -37,13 +37,13 @@ You can install the released version of talkbank from
 
 ``` r
 # install.packages("devtools")
-# devtools::install_github("rbcavanaugh/TBDBr")
+#devtools::install_github("Talkbank/TBDBr")
 library(TBDBr)
 ```
 
 ## Functionality
 
-talkbank allows you to access data from talkbank.org through several
+TBDBr allows you to access data from talkbank.org through several
 functions. For example, you can access the utterances for a participant
 in the child language component of talkbank.org:
 
