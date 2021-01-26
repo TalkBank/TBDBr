@@ -23,13 +23,13 @@ collections are freely available to support the research of human
 language and communication. TalkBank has been funded by the National
 Science Foundation and National Institute of Health since 1999.
 
-TalkBankDB (www.talkbank.org/DB) is a database and set of tools for exploring 
-TalkBank’s media and transcripts, specify data to be extracted, and pass 
-these data on to statistical programs for further analysis. 
-The TBDBr package (TalkBankDataBase - r) provides easy access to all 
-information within TalkBankDB, including clinical collections. 
-Clinical Banks are password protected. Visit www.talkbank.org to 
-learn about gaining access to these collections.
+TalkBankDB (www.talkbank.org/DB) is a database and set of tools for
+exploring TalkBank’s media and transcripts, specify data to be
+extracted, and pass these data on to statistical programs for further
+analysis. The TBDBr package (TalkBankDataBase - r) provides easy access
+to all information within TalkBankDB, including clinical collections.
+Clinical Banks are password protected. Visit www.talkbank.org to learn
+about gaining access to these collections.
 
 ## Installation
 
@@ -38,15 +38,15 @@ You can install the released version of talkbank from
 
 ``` r
 # install.packages("devtools")
-#devtools::install_github("TalkBank/TBDBr")
+# devtools::install_github("Talkbank/TBDBr")
 library(TBDBr)
 ```
 
 ## Functionality
 
-TBDBr allows access to data from TalkBankDB through several
-functions. For example, to get a table of utterances from a 
-particular transcript in the childes/Eng-NA/MacWhinney collection:
+TBDBr allows access to data from TalkBankDB through several functions.
+For example, to get a table of utterances from a particular transcript
+in the childes/Eng-NA/MacWhinney collection:
 
 ``` r
 example_utterances <- getUtterances(corpusName = 'childes',
@@ -68,9 +68,9 @@ example_utterances[10:14,]
 #> 14 NULL                                               hi     37.818  38.394
 ```
 
-The available functions for accessing different datatypes are below. The
+The available functions for accessing different data sets are below. The
 arguments for each function are documented, which can be accessed by
-typing ?functionName (e.g. ?getTranscriots()).
+typing ?functionName (e.g. ?getTranscriots()).
 
 ``` r
 getTranscripts()
