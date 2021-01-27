@@ -4,18 +4,16 @@
 \alias{validPath}
 \title{Check for valid path}
 \usage{
-validPath(targetPath, pathTree = getPathTrees())
+validPath(targetPath)
 }
 \arguments{
 \item{targetPath}{Vector of strings representing path to validate in pathTree.}
-
-\item{pathTree}{The tree of folder and file paths (value from getPathTrees()).}
 }
 \description{
 This helper function can be used by other functions to validate user 'corpora' parameter values passed to the query functions.
 }
 \examples{
-validPath(c('respMsg', 'childes', 'childes', 'Clinical'));
+validPath(c('childes', 'childes', 'Clinical'));
 
-validPath(c('respMsg', 'childes', 'childes', 'somethingThatDoesNotExist'));
+validPath(c('childes', 'childes', 'somethingThatDoesNotExist'));
 }
