@@ -38,11 +38,7 @@ You can install the released version of talkbank from
 
 ``` r
 # install.packages("devtools")
-<<<<<<< HEAD
-#devtools::install_github("Talkbank/TBDBr")
-=======
 # devtools::install_github("Talkbank/TBDBr")
->>>>>>> 92ea190121d59c3246c062a8b730ba7155756497
 library(TBDBr)
 ```
 
@@ -74,7 +70,7 @@ example_utterances[10:14,]
 
 The available functions for accessing different data sets are below. The
 arguments for each function are documented, which can be accessed by
-typing ?functionName (e.g. ?getTranscriots()).
+typing ?functionName (e.g. ?getTranscriots()).
 
 ``` r
 getTranscripts()
