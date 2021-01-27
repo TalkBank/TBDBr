@@ -92,19 +92,20 @@ getLegalValues()
 ```
 
 For troubleshooting, an additional function, validPath(), will return
-whether a given query is valid.
+whether a given path is valid.
 
 ``` r
-validPath(c('respMsg', 'childes', 'childes', 'Clinical'));
-#> [1] TRUE
+validPath(c('childes', 'childes', 'Clinical'));
+#> [1] "Invalid path at:  childes"
+#> [1] FALSE
 ```
 
-If the query is not valid, it will return which level of the query is
+If the path is not valid, it will return which level of the query is
 incorrect
 
 ``` r
-validPath(c('respMsg', 'childes', 'childes', 'somethingThatDoesNotExist'))
-#> [1] "Invalid path at:  somethingThatDoesNotExist"
+validPath(c('childes', 'childes', 'somethingThatDoesNotExist'))
+#> [1] "Invalid path at:  childes"
 #> [1] FALSE
 ```
 

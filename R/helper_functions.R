@@ -292,27 +292,34 @@ getPathTrees <- function () {
 #' @title Check for valid path
 #' @description This helper function can be used by other functions to validate user 'corpora' parameter values passed to the query functions.
 #' @param targetPath Vector of strings representing path to validate in pathTree.
-#' @param pathTree The tree of folder and file paths (value from getPathTrees()).
 #' @export
 #' @examples
-#' validPath(c('respMsg', 'childes', 'childes', 'Clinical'));
+#' validPath(c('childes', 'childes', 'Clinical'));
 #'
-#' validPath(c('respMsg', 'childes', 'childes', 'somethingThatDoesNotExist'));
-validPath <- function(targetPath, pathTree=getPathTrees()) {
-  # Successfully walked down targetPath in pathTree.
-  if(length(targetPath) == 0) {
-    return(TRUE);
+#' validPath(c('childes', 'childes', 'somethingThatDoesNotExist'));
+validPath <- function(targetPath) {
+
+  # Recursively validate targetPath.
+  checkPath <- function(targetPath, pathTree=getPathTrees()) {
+    # Successfully walked down targetPath in pathTree.
+    if(length(targetPath) == 0) {
+      return(TRUE);
+    }
+
+    # If targetPath so far is valid, continue down path.
+    if(exists(targetPath[1], where=pathTree)) {
+      checkPath(targetPath[-1], pathTree[[targetPath[1]]]);
+    }
+    else {
+      print(paste('Invalid path at: ', targetPath[1]));
+      return(FALSE);
+    }
   }
 
-  # If targetPath so far is valid, continue down path.
-  if(exists(targetPath[1], where=pathTree)) {
-    validPath(targetPath[-1], pathTree[[targetPath[1]]]);
-  }
-  else {
-    print(paste('Invalid path at: ', targetPath[1]));
-    return(FALSE);
-  }
+  return (checkPath(c('respMsg', targetPath), getPathTrees()));
 }
+
+
 
 #' @title Get legal values
 #' @description Prints available options (values) for each level of talkbankDB

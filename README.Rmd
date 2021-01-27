@@ -65,16 +65,16 @@ Because the options for each talkbank collection and function vary, the getLegal
 getLegalValues()
 ```
 
-For troubleshooting, an additional function, validPath(), will return whether a given query is valid.
+For troubleshooting, an additional function, validPath(), will return whether a given path is valid.
 
 ```{r vp}
-validPath(c('respMsg', 'childes', 'childes', 'Clinical'));
+validPath(c('childes', 'childes', 'Clinical'));
 ```
 
-If the query is not valid, it will return which level of the query is incorrect
+If the path is not valid, it will return which level of the query is incorrect
 
 ```{r vp2}
-validPath(c('respMsg', 'childes', 'childes', 'somethingThatDoesNotExist'))
+validPath(c('childes', 'childes', 'somethingThatDoesNotExist'))
 ```
 
 To access clinical collections, use the argument *auth = TRUE*. A pop-up will ask you to select the clinical bank you are trying to access and to enter the correct username and password for that database
