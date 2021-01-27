@@ -37,7 +37,7 @@ You can install the released version of talkbank from
 
 ``` r
 # install.packages("devtools")
-#devtools::install_github("TalkBank/TBDBr")
+#devtools::install_github("Talkbank/TBDBr")
 library(TBDBr)
 ```
 
@@ -117,5 +117,5 @@ aphasia_transcrips <- getTranscripts(corpusName = 'aphasia',
                                      auth = TRUE);
 ```
 
-More examples are located under
-[*articles*](https://rbcavanaugh.github.io/talkbank/articles/example-queries.html)
+More examples are located
+[here](https://talkbank.github.io/TBDBr/articles/example-queries.html)
