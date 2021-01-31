@@ -280,6 +280,8 @@ verifyArg <- function (corpusName, corpora, lang, media, age, gender, designType
 
 #' @title Get Path Trees
 #' @description Get path tree to every doc in TalkBankDB This can be useful for verifying "corpora" param passed to query functions by walking down and verifying path in object returned here.  Can give user feedback on what part of path is incorrect. Future use for GUIs to select paths or auto-complete
+#' @export
+
 getPathTrees <- function () {
   query <- list(queryVals = list());
 
@@ -287,6 +289,9 @@ getPathTrees <- function () {
 
   return( respData );
 }
+
+
+
 
 
 #' @title Check for valid path
