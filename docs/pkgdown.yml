@@ -3,5 +3,6 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   example-queries: example-queries.html
-last_built: 2021-01-27T18:03Z
+  sunburst: sunburst.html
+last_built: 2021-01-31T03:47Z
 
