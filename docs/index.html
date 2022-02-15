@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">TBDBr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -56,15 +52,12 @@
 <li>
       <a href="articles/example-queries.html">Example Queries</a>
     </li>
-    <li>
-      <a href="articles/sunburst.html">Visualizing TBDBr</a>
-    </li>
   </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/TalkBank/TalkBankDB-R/">
+  <a href="https://github.com/TalkBank/TalkBankDB-R/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -81,31 +74,31 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="tbdbr" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#tbdbr" class="anchor"></a>TBDBr</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="tbdbr">TBDBr<a class="anchor" aria-label="anchor" href="#tbdbr"></a>
+</h1></div>
 <!-- badges: start -->
 
 <!-- badges: end -->
 <p>The goal of the TBDBr package is to provide easy access to TalkBankDB through an R API.</p>
 <p>TalkBank (www.talkbank.org) is a vast collection of audio and video recordings across more than 50 languages linked to richly annotated transcriptions. The goal of TalkBank is to foster fundamental research in the study of human communication with an emphasis on spoken communication. The collection includes repositories in 14 research areas, including language development, adult conversation, multilingualism, and disorders which affect communication. These collections are freely available to support the research of human language and communication. TalkBank has been funded by the National Science Foundation and National Institute of Health since 1999.</p>
 <p>TalkBankDB (www.talkbank.org/DB) is a database and set of tools for exploring TalkBank’s media and transcripts, specify data to be extracted, and pass these data on to statistical programs for further analysis. The TBDBr package (TalkBankDataBase - r) provides easy access to all information within TalkBankDB, including clinical collections. Clinical Banks are password protected. Visit www.talkbank.org to learn about gaining access to these collections.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of talkbank from <a href="https://github.com/">GitHub</a> with:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the released version of talkbank from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="co"># devtools::install_github("Talkbank/TBDBr")</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/TalkBank/TalkBankDB-R">TBDBr</a></span><span class="op">)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/TalkBank/TalkBankDB-R" class="external-link">TBDBr</a></span><span class="op">)</span></code></pre></div>
 </div>
-<div id="functionality" class="section level2">
-<h2 class="hasAnchor">
-<a href="#functionality" class="anchor"></a>Functionality</h2>
+<div class="section level2">
+<h2 id="functionality">Functionality<a class="anchor" aria-label="anchor" href="#functionality"></a>
+</h2>
 <p>TBDBr allows access to data from TalkBankDB through several functions. For example, to get a table of utterances from a particular transcript in the childes/Eng-NA/MacWhinney collection:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">example_utterances</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getUtterances.html">getUtterances</a></span><span class="op">(</span>corpusName <span class="op">=</span> <span class="st">'childes'</span>,
-                                    corpora <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'childes'</span>, <span class="st">'Eng-NA'</span>, <span class="st">'MacWhinney'</span>, <span class="st">'010411a'</span><span class="op">)</span><span class="op">)</span>;
+                                    corpora <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'childes'</span>, <span class="st">'Eng-NA'</span>, <span class="st">'MacWhinney'</span>, <span class="st">'010411a'</span><span class="op">)</span><span class="op">)</span>;
 <span class="co">#&gt; [1] "Fetching data, please wait..."</span>
 <span class="co">#&gt; [1] "Success!"</span>
 <span class="va">example_utterances</span><span class="op">[</span><span class="fl">10</span><span class="op">:</span><span class="fl">14</span>,<span class="op">]</span>
@@ -135,65 +128,76 @@
 <code class="sourceCode R"><span class="fu"><a href="reference/getLegalValues.html">getLegalValues</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>For troubleshooting, an additional function, validPath(), will return whether a given path is valid.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/validPath.html">validPath</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'childes'</span>, <span class="st">'childes'</span>, <span class="st">'Clinical'</span><span class="op">)</span><span class="op">)</span>;
+<code class="sourceCode R"><span class="fu"><a href="reference/validPath.html">validPath</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'childes'</span>, <span class="st">'childes'</span>, <span class="st">'Clinical'</span><span class="op">)</span><span class="op">)</span>;
 <span class="co">#&gt; [1] "Invalid path at:  childes"</span>
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
 <p>If the path is not valid, it will return which level of the query is incorrect</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/validPath.html">validPath</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'childes'</span>, <span class="st">'childes'</span>, <span class="st">'somethingThatDoesNotExist'</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="reference/validPath.html">validPath</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'childes'</span>, <span class="st">'childes'</span>, <span class="st">'somethingThatDoesNotExist'</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "Invalid path at:  childes"</span>
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
 <p>To access clinical collections, use the argument <em>auth = TRUE</em>. A pop-up will ask you to select the clinical bank you are trying to access and to enter the correct username and password for that database</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">aphasia_transcrips</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/getTranscripts.html">getTranscripts</a></span><span class="op">(</span>corpusName <span class="op">=</span> <span class="st">'aphasia'</span>,
-                                     corpora <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'aphasia'</span>, <span class="st">'English'</span>, <span class="st">'Aphasia'</span>, <span class="st">'Adler'</span><span class="op">)</span>,
+                                     corpora <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'aphasia'</span>, <span class="st">'English'</span>, <span class="st">'Aphasia'</span>, <span class="st">'Adler'</span><span class="op">)</span>,
                                      auth <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>;</code></pre></div>
-<p>More examples are located <a href="https://talkbank.github.io/TBDBr/articles/example-queries.html">here</a></p>
+<p>More examples are located <a href="https://talkbank.github.io/TBDBr/articles/example-queries.html" class="external-link">here</a></p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/TalkBank/TalkBankDB-R/">https://​github.com/​TalkBank/​TalkBankDB-R/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/TalkBank/TalkBankDB-R/issues">https://​github.com/​TalkBank/​TalkBankDB-R/​issues</a>
-</li>
+<li><a href="https://github.com/TalkBank/TalkBankDB-R/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/TalkBank/TalkBankDB-R/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small>GPL (&gt;= 3)</small></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>John Kowalski <br><small class="roles"> Author </small>  </li>
-<li>Rob Cavanaugh <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/-8681" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing TBDBr</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/TalkBank/TBDBr/actions"><img src="https://github.com/TalkBank/TBDBr/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li>John Kowalski <br><small class="roles"> Author </small>  </li>
+<li>Rob Cavanaugh <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/-8681" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/TalkBank/TBDBr/actions" class="external-link"><img src="https://github.com/TalkBank/TBDBr/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by John Kowalski, Rob Cavanaugh.</p>
+  <p></p>
+<p>Developed by John Kowalski, Rob Cavanaugh.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -201,6 +205,8 @@
 
   
 
+
+  
 
   </body>
 </html>
