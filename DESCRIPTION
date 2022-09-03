@@ -23,7 +23,8 @@ BugReports: https://github.com/TalkBank/TalkBankDB-R/issues
 Suggests: 
     spelling,
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 Language: en-US
 VignetteBuilder: knitr
 Imports: 
@@ -32,3 +33,4 @@ Imports:
     stats,
     kableExtra,
     shiny
+Config/testthat/edition: 3
