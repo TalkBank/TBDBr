@@ -11,7 +11,7 @@ Authors@R:
            family = "Cavanaugh",
            role = c("aut", "cre"),
            email = "rob.cavanaugh@pitt.edu",
-           comment = c(ORCID = 0000-0002-2114-6565)))
+           comment = c(ORCID = "0000-0002-2114-6565")))
 Description: The purpose of TalkBankDB is to provide an intuitive on-line interface for researchers to explore TalkBank's media and transcripts, specify data to be extracted, and pass these data on to statistical programs for further analysis.
 License: GPL (>= 3)
 Encoding: UTF-8
